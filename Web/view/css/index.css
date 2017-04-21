@@ -3,3 +3,36 @@
 	@media only screen
 	and (min-width : 1224px)
 }
+
+INPUT.inputControl{
+	width: 300px;
+	height: 30px;
+}
+
+LABEL.text{
+	color: #ffffff;
+}
+
+DIV.div-align{
+	float: left;
+}
+
+DIV.centerFull{
+	position: absolute;
+	top: 30%;
+	left: 50%;
+   margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+DIV.centerTop{
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+BUTTON.myBtn{
+	width: 148px
+}
