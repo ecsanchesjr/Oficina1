@@ -13,8 +13,9 @@ LABEL.text{
 	color: #ffffff;
 }
 
-DIV.div-align{
-	float: left;
+.check{
+	width: 10px;
+	height: 10px;
 }
 
 DIV.centerFull{
@@ -35,4 +36,8 @@ DIV.centerTop{
 
 BUTTON.myBtn{
 	width: 148px
+}
+
+LABEL.minInfo{
+	font-size: 10px;
 }
