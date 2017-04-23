@@ -11,7 +11,24 @@
 		<link rel="stylesheet" type="text/css" href="./view/css/common.css" />
 		<link rel="stylesheet" type="text/css" href="./view/css/index.css" />
 		<script>
-			
+			function startLogin(){
+				$(document).ready(function(){
+					$.post("./controller/loginController.php",
+				{
+					nick: $("#nick").val(),
+					passwd: $("#passwd").val()
+				},
+				function(data, status){
+					if(data.search("Error")>0){
+						document.getElementById('labelUser') = errUser;
+						document.getElementById('labelPass') = errPass;
+						alert("ERRO!");
+					}else{
+						alert("VAI LÁ, CARAIIIIII");
+					}
+				});
+			});
+			}
 		</script>
 	</head>
 
@@ -21,7 +38,7 @@
 		</div>
 		<br />
 			<div class="centerFull">
-				<form class="form-horizontal">
+				<form onsubmit="startLogin();return false;" id="target" class="form-horizontal">
 					<div class="form-group">
 						<label class="control-label col-sm-2 text" for="nick">Usuário: </label>
 						<div class="col-sm-10">
