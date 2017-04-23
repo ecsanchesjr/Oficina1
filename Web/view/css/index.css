@@ -13,6 +13,14 @@ LABEL.text{
 	color: #ffffff;
 }
 
+.minInfo{
+	font-size: 10px;
+}
+
+.errLabel{
+	color: #96030d;
+}
+
 .check{
 	width: 10px;
 	height: 10px;
@@ -36,8 +44,4 @@ DIV.centerTop{
 
 BUTTON.myBtn{
 	width: 148px
-}
-
-LABEL.minInfo{
-	font-size: 10px;
 }

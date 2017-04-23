@@ -8,21 +8,22 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="./view/css/common.css" />
-		<link rel="stylesheet" type="text/css" href="./view/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="view/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="view/css/index.css" />
 		<script>
 			function startLogin(){
 				$(document).ready(function(){
-					$.post("./controller/loginController.php",
+					$.post("controller/loginController.php",
 				{
 					nick: $("#nick").val(),
 					passwd: $("#passwd").val()
 				},
 				function(data, status){
-					if(data.search("Error")>0){
-						document.getElementById('labelUser') = errUser;
-						document.getElementById('labelPass') = errPass;
-						alert("ERRO!");
+					if(data.search("error")>0){  // USUÁRIO OU SENHA ERRADOS
+						//alert("ERRO!");
+						alert(data.search());
+						//document.getElementById("labelUser").innerHTML = "";
+						document.getElementById("labelPass").innerHTML = "Usuário e/ou Senha inválidos.";
 					}else{
 						alert("VAI LÁ, CARAIIIIII");
 					}
@@ -50,7 +51,8 @@
 						<label class="control-label col-sm-2 text" for="pwd">Senha: </label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control inputControl" id="passwd" placeholder="Entre com a senha." required/>
-							<label class="minInfo" id="labelPass"></label>
+							<label class="minInfo errLabel" id="labelPass"></label>
+
 						</div>
 					</div>
 					<div class="form-group">

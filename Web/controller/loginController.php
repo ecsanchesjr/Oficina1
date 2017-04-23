@@ -4,15 +4,14 @@
 	session_start();
 
 	$obj = tryConn($_POST['nick'], $_POST['passwd']);
+	/*
+	* Se objeto for falso, então ocorreu algum erro na verificação de usuário.
+	*/
 	if($obj){
-		echo "Ok";
+		echo "ok";
 		exit();
 	}else{
-		<script>
-			var errUser = echo $errUser;
-			var errPass = echo $errPass;
-		</script>
-		echo "Error";
+		echo "error";
 		exit();
 	}
 ?>
