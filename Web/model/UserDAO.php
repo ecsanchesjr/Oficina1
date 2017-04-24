@@ -18,12 +18,12 @@ class UserDAO{
 
 	function verifUserExists($user, $pass){
 		$search = "SELECT usuario_senha FROM usuario WHERE usuario_nick =";
-		$search .= "'$user'";
+		$search .= "'$user';";
 
 		$result = $this->connect->query($search);
 		if($result->num_rows == 1){   // verifica se encontrou algum usuário de acordo com o dado passado
 			$RowsData = $result->fetch_assoc();
-			if(strcmp($pass, $RowsData['usuario_senha'])){  // testa a senha para ver se esta igual
+			if($pass == $RowsData['usuario_senha']){  // testa a senha para ver se esta igual
 				return(true);   //TUDO DEU CERTO
 			}else{
 				return(false);  // SENHA INVÁLIDA

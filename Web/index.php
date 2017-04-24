@@ -13,20 +13,21 @@
 		<script>
 			function startLogin(){
 				$(document).ready(function(){
-					$.post("controller/loginController.php",
+					$.post("controller/LoginController.php",
 				{
 					nick: $("#nick").val(),
 					passwd: $("#passwd").val()
 				},
 				function(data, status){
 					document.getElementById("MensagemModal").innerHTML = data;
-					$("#Modal").modal();
-					if(data.search("error")>0){  // USUÁRIO OU SENHA ERRADOS
-						//alert("ERRO!");
-						//document.getElementById("labelUser").innerHTML = "";
+					//$("#Modal").modal(); //Modal de debug
+					if(data == "error"){  // USUÁRIO OU SENHA ERRADOS
 						document.getElementById("labelPass").innerHTML = "Usuário e/ou Senha inválidos.";
+					}else if(data == "ok"){
+						location.href="view/Home.php";
 					}else{
-						alert("VAI LÁ, CARAIIIIII");
+						//alert("WTF");
+						//não cai aqui
 					}
 				});
 			});
@@ -78,10 +79,10 @@
 		  <div class="modal-content">
 			 <div class="modal-header">
 			   <button type="button" class="close" data-dismiss="modal">&times;</button>
-			   <h4 class="modal-title">Atenção</h4>
+			   <h4 class="modal-title"></h4>
 			 </div>
 			 <div id="MensagemModal" class="modal-body">
-			  <p>Usuário ou Senha Inválidos!</p>
+			  <p></p>
 			 </div>
 			 <div class="modal-footer">
 			   <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
