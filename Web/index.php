@@ -37,7 +37,7 @@
 
 	<body>
 		<div class="centerTop">
-				<p  class="title high-title"> Sistema Automatizado de Controle de Inventário </p>
+				<p  class="title giant-title"> Sistema Automatizado de Controle de Inventário </p>
 		</div>
 		<br />
 			<div class="centerFull">

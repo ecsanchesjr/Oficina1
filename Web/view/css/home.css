@@ -7,13 +7,13 @@
 .infoGroup{
 	background-color: #24c116;
 
-	width: 1128px;
-	height: 100px;
+	width: 1308px;
+	height: 70px;
 	margin: 0 auto;
 
 	position: relative;
 	/*left: 50px;*/
-	top: 100px;
+	top: -60px;
 }
 
 .boxInfos{
@@ -26,4 +26,11 @@
 	left: 20px;
 	top: 10px;
 	font-family: 'Code Bold';
+}
+
+
+.titleAlign{
+	position: relative;
+	left: auto;
+	top: -40px;
 }

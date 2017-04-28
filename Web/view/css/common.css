@@ -21,10 +21,15 @@ body{
 .title{
 	font-family: 'Phenomena';
 	color: rgb(255, 255, 255);
+	text-shadow: 3px 3px 20px black, 2px 2px rgb(110, 13, 13);
 }
 .high-title{
 	font-size: 30px;
 }
-.low-title{
-	font-size: 30px;
+.giant-title{
+	font-size: 50px;
+}
+
+.textCenter{
+	text-align: center;
 }
