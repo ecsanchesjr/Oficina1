@@ -1,0 +1,29 @@
+[cc lang=”css”]{ / /* Responsivo */
+	Styles
+	@media only screen
+	and (min-width : 1224px)
+}
+
+.infoGroup{
+	background-color: #24c116;
+
+	width: 1128px;
+	height: 100px;
+	margin: 0 auto;
+
+	position: relative;
+	/*left: 50px;*/
+	top: 100px;
+}
+
+.boxInfos{
+	border-radius: 20px;
+	box-shadow: 1px 3px 3px 1px #034d27;
+}
+
+.textInfos{
+	position: relative;
+	left: 20px;
+	top: 10px;
+	font-family: 'Code Bold';
+}
