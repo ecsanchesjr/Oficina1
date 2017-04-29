@@ -1,0 +1,26 @@
+[cc lang=”css”]{ / /* Responsivo */
+	Styles
+	@media only screen
+	and (min-width : 1224px)
+}
+
+.inputControl{
+	width: 300px;
+	height: 30px;
+}
+
+.center{
+	position: relative;
+	top: 20%;
+}
+
+.text{
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+}
+
+.titleAlign{
+	position: relative;
+	left: auto;
+	margin: 0 auto;
+}

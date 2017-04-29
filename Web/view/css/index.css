@@ -4,7 +4,7 @@
 	and (min-width : 1224px)
 }
 
-INPUT.inputControl{
+.inputControl{
 	width: 300px;
 	height: 30px;
 }
@@ -43,6 +43,6 @@ DIV.centerTop{
 	transform: translate(-50%, -50%);
 }
 
-BUTTON.myBtn{
-	width: 148px
+.myBtn{
+	width: 148px;
 }

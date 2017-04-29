@@ -12,7 +12,6 @@ class UserDAO{
 	function tryConn($user, $pass){
 		$this->connect = $this->connectionDB("localhost", "root", "123", "saci");
 		$ctrl = $this->verifUserExists($user, $pass);
-		//return($ctrl);
 		return($ctrl);
 	}
 
@@ -31,6 +30,28 @@ class UserDAO{
 		}else{
 			return(false);  // USUÁRIO NÃO ENCONTRADO
 		}
+	}
+
+	function searchNameUser($nick){
+		$this->connect = $this->connectionDB("localhost", "root", "123", "saci");
+
+		$search = "SELECT p.pessoa_nome FROM Pessoa p, Usuario u WHERE u.usuario_nick = ";
+		$search .= "'$nick' AND u.usuario_regescola = p.pessoa_regescola;";
+		$result = $this->connect->query($search);
+
+		$RowsData = $result->fetch_assoc();
+		return($RowsData['pessoa_nome']);
+	}
+
+	function searchReUser($nick){
+		$this->connect = $this->connectionDB("localhost", "root", "123", "saci");
+
+		$search = "SELECT p.pessoa_regescola FROM Pessoa p, Usuario u WHERE u.usuario_nick = ";
+		$search .= "'$nick' AND u.usuario_regescola = p.pessoa_regescola;";
+		$result = $this->connect->query($search);
+
+		$RowsData = $result->fetch_assoc();
+		return($RowsData['pessoa_regescola']);
 	}
 }
 ?>

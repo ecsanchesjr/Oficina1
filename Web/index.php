@@ -20,14 +20,11 @@
 				},
 				function(data, status){
 					document.getElementById("MensagemModal").innerHTML = data;
-					//$("#Modal").modal(); //Modal de debug
+					$("#Modal").modal(); //Modal de debug
 					if(data == "error"){  // USUÁRIO OU SENHA ERRADOS
 						document.getElementById("labelPass").innerHTML = "Usuário e/ou Senha inválidos.";
 					}else if(data == "ok"){
 						location.href="view/Home.php";
-					}else{
-						//alert("WTF");
-						//não cai aqui
 					}
 				});
 			});
@@ -37,7 +34,7 @@
 
 	<body>
 		<div class="centerTop">
-				<p  class="title giant-title"> Sistema Automatizado de Controle de Inventário </p>
+				<p  class="title giant-title">Sistema Automatizado de Controle de Inventário</p>
 		</div>
 		<br />
 			<div class="centerFull">
@@ -60,14 +57,14 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<div class="checkbox">
-								<label><input type="checkbox"> Lembrar dados</label>
+								<label><input type="checkbox">Lembrar dados</label>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-default myBtn">Entrar</button>
-							<button type="submit" class="btn btn-default myBtn">Registrar</button>
+							<a class="btn btn-default myBtn" href="view/Cadastro.php" role="button">Cadastrar</a>
 						</div>
 					</div>
 				</form>

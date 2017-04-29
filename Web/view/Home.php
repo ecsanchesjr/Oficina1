@@ -6,18 +6,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/home.css" />
-	</head>
+		</head>
 	<body>
 		<p class="title giant-title titleAlign textCenter">
 			Seja Bem-Vindo ao Portal do SACI
 		</p>
 		<div class="infoGroup boxInfos">
-			<p class="textInfos textCenter">
-				NOME DO MELIANTE
-				<br />
-				<br />
-				REGISTRO DO MELIANTE
-			</p>
+			<?php
+				session_start();
+				include("../model/UserDAO.php");
+				$obj = new UserDAO();
+				$nick = $_SESSION["usuario"];
+				echo '<p class="textInfos textCenter">'.$obj->searchNameUser($nick).'</p>';
+
+				$nick = $_SESSION["usuario"];
+				echo '<p class="textInfos textCenter">'.$obj->searchReUser($nick).'</p>';
+			?>
 		</div>
 	</body>
 </html>
