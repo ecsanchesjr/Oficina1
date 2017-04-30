@@ -21,7 +21,7 @@ body{
 .title{
 	font-family: 'Phenomena';
 	color: rgb(255, 255, 255);
-	text-shadow: 3px 3px 20px black, 2px 2px rgb(110, 13, 13);
+	text-shadow: 3px 3px 20px black, 2px 2px #6e0d0d;
 }
 .high-title{
 	font-size: 30px;

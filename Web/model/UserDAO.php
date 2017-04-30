@@ -6,6 +6,10 @@ class UserDAO{
 
 	function connectionDB($serverHost, $userHost, $passwdHost, $db){
 		$this->conn = new mysqli($serverHost, $userHost, $passwdHost, $db);
+		$this->conn->query("SET NAMES 'utf8'");
+		$this->conn->query('SET character_set_connection=utf8');
+		$this->conn->query('SET character_set_client=utf8');
+		$this->conn->query('SET character_set_results=utf8');
 		return($this->conn);
 	}
 
