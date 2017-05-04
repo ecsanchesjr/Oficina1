@@ -4,8 +4,8 @@ class UserDAO{
 
 	public $connect;
 
-	function connectionDB($serverHost, $userHost, $passwdHost, $db){
-		$this->conn = new mysqli($serverHost, $userHost, $passwdHost, $db);
+	function connectionDB(){
+		$this->conn = new mysqli("localhost", "root", "123", "saci");
 		$this->conn->query("SET NAMES 'utf8'");
 		$this->conn->query('SET character_set_connection=utf8');
 		$this->conn->query('SET character_set_client=utf8');
@@ -14,7 +14,7 @@ class UserDAO{
 	}
 
 	function tryConn($user, $pass){
-		$this->connect = $this->connectionDB("localhost", "root", "123", "saci");
+		$this->connect = $this->connectionDB();
 		$ctrl = $this->verifUserExists($user, $pass);
 		return($ctrl);
 	}
@@ -37,7 +37,7 @@ class UserDAO{
 	}
 
 	function searchNameUser($nick){
-		$this->connect = $this->connectionDB("localhost", "root", "123", "saci");
+		$this->connect = $this->connectionDB();
 
 		$search = "SELECT p.pessoa_nome FROM Pessoa p, Usuario u WHERE u.usuario_nick = ";
 		$search .= "'$nick' AND u.usuario_regescola = p.pessoa_regescola;";
@@ -48,7 +48,7 @@ class UserDAO{
 	}
 
 	function searchReUser($nick){
-		$this->connect = $this->connectionDB("localhost", "root", "123", "saci");
+		$this->connect = $this->connectionDB();
 
 		$search = "SELECT p.pessoa_regescola FROM Pessoa p, Usuario u WHERE u.usuario_nick = ";
 		$search .= "'$nick' AND u.usuario_regescola = p.pessoa_regescola;";
