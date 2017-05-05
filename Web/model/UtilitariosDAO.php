@@ -14,5 +14,18 @@ class UtilitariosDAO{
 			return(false);
 		}
 	}
+
+	function isInvetory($hex){
+		$bdConn = new UserDAO();
+		$conn = $bdConn->connectionDB();
+		$verif = "SELECT * FROM Inventory WHERE pessoa_key = '".$hex."'";
+
+		$result = $conn->query($verif);
+		if($result->num_rows==1){
+			return(true);
+		}else{
+			return(false);
+		}	
+	}
 }
 ?>

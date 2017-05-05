@@ -11,16 +11,35 @@
 
 .center{
 	position: relative;
+	width: 56%;
 	top: 20%;
+	margin: 0 auto;
 }
 
 .text{
 	color: #ffffff;
 	text-shadow: 1px 1px black;
+	width: 45%;
 }
 
 .titleAlign{
 	position: relative;
+	top: 10%;
 	left: auto;
 	margin: 0 auto;
+}
+
+.input{
+	float: right;
+}
+
+.control{
+	width: 30%;
+	float: right;
+}
+
+.tamControl{
+	position: relative;
+	top: 100%;
+	width: 34%;
 }

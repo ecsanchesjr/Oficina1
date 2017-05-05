@@ -16,16 +16,13 @@
 	</p>
 
 	<!--- fazer uma função pra atualizar apenas a area após verificar se o RE existe --->
-	<p class="title giant-title titleAlign textCenter">
-		FALTA FAZER ISSO
-	</p>
 
-	<div >
+	<div class="center tamControl">
 		<form onsubmit="verifIfReExists();return false;" id="target" class="form-horizontal">
-			<div class="form-group">
+			<div class="form-group ">
 				<label class="control-label col-sm-2 text" for="re" >Informe seu Registro Escolar:</label>
-				<div class="col-sm-10">
-					<input type="numeric" class="form-control inputControl" id="re" placeholder="Entre com o registro escolar." pattern="[0-9]*" required/>
+				<div class="col-sm-10 control">
+					<input type="numeric" class="form-control inputControl input" id="re" placeholder="Entre com o registro escolar." pattern="[0-9]*" required/>
 				</div>
 			</div>
 		</form>
