@@ -1,20 +1,36 @@
 <?php
-public $hexPessoa;
-public $hexInventario;
-public $codeArduino;
+$peopleExists = false;
+$inventoryExists =false;
 
-public $hex;
+$conn = new mysqli("localhost", "root", "123", "saci");
 
-$util = new UtilitariosControllerClass();
+if(isset($_GET["keyP"])&&isset($_GET["keyI"])&&isset($_GET["ardCode"])){
+	$hexPessoa = $_GET["keyP"];
+	$hexInventario = $_GET["keyI"];
+	$codeArduino = $_GET["ardCode"];
 
-if(isset($_GET['ardCode']) && isset($_GET['key'])){
-	$codeArduino = $_GET['ardCode'];
-	$hex = $_GET['key'];
-	echo $util->verifHexTypes($hex, $hexPessoa);
+	$rs1 = $conn->query("SELECT * FROM Pessoa WHERE pessoa_key='".$hexPessoa."';");
+	if($rs1->num_rows==1){
+		$peopleExists = true;
+	}
+
+	mysqli_close($conn);
+	$conn = new mysqli("localhost", "root", "123", "saci");
+
+	$rs2 = $conn->query("SELECT * FROM Inventario WHERE inventario_key='".$hexInventario."';");
+	if($rs2->num_rows==1){
+		$inventoryExists = true;
+	}
+	if($peopleExists && $inventoryExists){
+		echo"<DEU TUDO CERTO!>";
+		exit;
+	}else{
+		echo"<PROBLEMA EM UMA DAS TAGS>";
+		exit;
+	}
 }else{
-	echo "<erro de envio>";
+	echo"<Tente novamente>";
 	exit;
 }
-
 
 ?>

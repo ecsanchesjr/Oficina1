@@ -32,11 +32,14 @@ class HistoricoDAO{
 		}
 	}
 
-	function createNewLoan(){
+	function createNewLoan($hex){
 		$conn = new UserDAO();
 		$obj = $conn->connectionDB();
-		
 
+		$hue = "INSERT INTO Departamento(departamento_sigla, departamento_nome) VALUES('BATATA', 'DUNHA123');";
+
+		$obj->query($hue);
+		return("<Executou>");
 	}
 
 }

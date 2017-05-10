@@ -25,7 +25,7 @@ class UtilitariosDAO{
 			return(true);
 		}else{
 			return(false);
-		}	
+		}
 	}
 }
 ?>
