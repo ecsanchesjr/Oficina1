@@ -35,7 +35,7 @@ class HistoricoDAO{
 		$conn = new UserDAO();
 		$obj = $conn->connectionDB();
 
-		$verif = "SELECT historico_estado, historico_id FROM Historico ";
+		$verif = "SELECT historico_id FROM Historico ";
 		$verif .= "WHERE historico_inventario = '".$this->inventario."' AND historico_estado = '".ESTADO_EMPRESTADO."';";
 
 		$resultVerif = $obj->query($verif);
