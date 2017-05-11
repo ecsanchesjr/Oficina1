@@ -88,7 +88,7 @@ void loop(){ // NOT FINISHED
     control++;
     msgSecundaria();
   }
-  delay(3000);
+  delay(2000);
   if(control==2){
     continue_exec();
   }
@@ -134,15 +134,17 @@ void continue_exec() {
   Serial.println(hex1);
   Serial.println(hex2);
 
-  if(aux.substring(0,15).equals("DEU TUDO CERTO!")){
-    msgOk();
+  if(aux.substring(0,19).equals("Devolucao concluida")){
+	  msgDevol();
+  }else if(aux.substring(0,20).equals("Emprestimo concluido")){
+	  msgEmpres();
   }else if(aux.substring(0,24).equals("PROBLEMA EM UMA DAS TAGS")){
     msgProblema();
   }else if(aux.substring(0,20).equals("Tente novamente")){
     msgProblema();
   }
 
-  delay(2000);
+  delay(5000);
   soft_reset();
 }
 
@@ -153,11 +155,18 @@ void msgProblema(){
   lcd.print("Aguarde e Repita");
 }
 
-void msgOk(){
+void msgEmpres(){
+	lcd.clear();
+	lcd.print("   LEVEL UP!    ");
+	lcd.setCursor(0,1);
+	lcd.print("   EMPRESTIMO   ");
+}
+
+void msgDevol(){
   lcd.clear();
   lcd.print("   LEVEL UP!    ");
   lcd.setCursor(0,1);
-  lcd.print("IT'S ALIVEEEEEE!");
+  lcd.print("   DEVOLUCAO   ");
 }
 
 void soft_reset() {

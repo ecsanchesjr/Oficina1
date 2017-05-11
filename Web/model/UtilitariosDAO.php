@@ -15,7 +15,7 @@ class UtilitariosDAO{
 		}
 	}
 
-	function isInvetory($hex){
+	function isInventory($hex){
 		$bdConn = new UserDAO();
 		$conn = $bdConn->connectionDB();
 		$verif = "SELECT * FROM Inventory WHERE pessoa_key = '".$hex."'";

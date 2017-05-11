@@ -10,6 +10,8 @@
 	if($obj){
 		$_SESSION["usuario"] = $_POST['nick'];
 		$_SESSION["senha"] = $_POST['passwd'];
+		$_POST['nick'] = "";
+		$_POST['passwd'] = "";
 		echo "ok";
 		exit();
 	}else{

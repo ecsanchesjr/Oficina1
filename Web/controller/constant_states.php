@@ -1,4 +1,4 @@
 <?php
-	define('ESTADO_EMPRESTADO', 0);
-	define('ESTADO_DEVOLVIDO', 1);
+	define("ESTADO_EMPRESTADO", 0);
+	define("ESTADO_DEVOLVIDO", 1);
 ?>
