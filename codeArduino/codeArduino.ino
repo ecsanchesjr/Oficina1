@@ -4,7 +4,7 @@
 #include <Ethernet.h>
 
 
-byte server[] = {192,168,1,100};
+byte server[] = {192,168,1,102};
 String location = " /Oficina1/web/controller/ArduinoController.php?";
 
 
@@ -150,7 +150,7 @@ void continue_exec() {
 
 void msgProblema(){
   lcd.clear();
-  lcd.print("Problema na leitura");
+  lcd.print("Erro de Leitura");
   lcd.setCursor(0,1);
   lcd.print("Aguarde e Repita");
 }
