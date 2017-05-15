@@ -19,8 +19,8 @@
 					passwd: $("#passwd").val()
 				},
 				function(data, status){
-					//document.getElementById("MensagemModal").innerHTML = data;
-					//$("#Modal").modal(); //Modal de debug
+					document.getElementById("MensagemModal").innerHTML = data;
+					$("#Modal").modal(); //Modal de debug
 					if(data == "error"){  // USUÁRIO OU SENHA ERRADOS
 						document.getElementById("labelPass").innerHTML = "Usuário e/ou Senha inválidos.";
 					}else if(data == "ok"){

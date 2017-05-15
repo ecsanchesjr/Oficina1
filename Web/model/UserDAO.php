@@ -1,25 +1,21 @@
 <?php
+include("ConexaoDAO.php");
 
 class UserDAO{
-
+	// Classe que controla a usuario e o login do mesmo
 	public $connect;
 
-	function connectionDB(){
-		$this->conn = new mysqli("localhost", "root", "123", "saci");
-		$this->conn->query("SET NAMES 'utf8'");
-		$this->conn->query('SET character_set_connection=utf8');
-		$this->conn->query('SET character_set_client=utf8');
-		$this->conn->query('SET character_set_results=utf8');
-		return($this->conn);
-	}
-
 	function tryConn($user, $pass){
-		$this->connect = $this->connectionDB();
+		// Inicia a conexão do Usuário no sistema
+		$obj = new ConexaoDAO();
+		$this->connect = $obj->connectionDB();
 		$ctrl = $this->verifUserExists($user, $pass);
 		return($ctrl);
 	}
 
+
 	function verifUserExists($user, $pass){
+		// Verifica se o usuário existe no banco
 		$search = "SELECT usuario_passwd FROM usuario WHERE usuario_nick =";
 		$search .= "'$user';";
 
@@ -36,8 +32,10 @@ class UserDAO{
 		}
 	}
 
-	function searchNameUser($nick){
-		$this->connect = $this->connectionDB();
+	function getNameUser($nick){
+		// Retorna o nome do usuário conectado
+		$obj = new ConexaoDAO();
+		$this->connect = $obj->connectionDB();
 
 		$search = "SELECT p.pessoa_nome FROM Pessoa p, Usuario u WHERE u.usuario_nick = ";
 		$search .= "'$nick' AND u.usuario_regescola = p.pessoa_regescola;";
@@ -47,8 +45,10 @@ class UserDAO{
 		return($RowsData['pessoa_nome']);
 	}
 
-	function searchReUser($nick){
-		$this->connect = $this->connectionDB();
+	function getReUser($nick){
+		// Retorna o RE do usuário conectado
+		$obj = new ConexaoDAO();
+		$this->connect = $obj->connectionDB();
 
 		$search = "SELECT p.pessoa_regescola FROM Pessoa p, Usuario u WHERE u.usuario_nick = ";
 		$search .= "'$nick' AND u.usuario_regescola = p.pessoa_regescola;";

@@ -19,10 +19,10 @@
 				include("../model/UserDAO.php");
 				$obj = new UserDAO();
 				$nick = $_SESSION["usuario"];
-				echo '<p class="textInfos textCenter">'.$obj->searchNameUser($nick).'</p>';
+				echo '<p class="textInfos textCenter">'.$obj->getNameUser($nick).'</p>';
 
 				$nick = $_SESSION["usuario"];
-				echo '<p class="textInfos textCenter">'.$obj->searchReUser($nick).'</p>';
+				echo '<p class="textInfos textCenter">'.$obj->getReUser($nick).'</p>';
 			?>
 		</div>
 

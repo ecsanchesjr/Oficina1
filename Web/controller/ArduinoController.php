@@ -1,5 +1,6 @@
 <?php
-include("../model/HistoricoDAO.php");
+include("../model/ConexaoDAO.php");
+include("TransacaoController.php");
 
 // Recebe os valores de data e hora quando o acesso foi feito
 date_default_timezone_set('America/Sao_Paulo');
@@ -9,28 +10,32 @@ $time = new DateTime('now');
 $peopleExists = false; // verificar se a key de pessoa existe
 $inventoryExists = false; // verificar se a key de inventario existe
 
+$peopleObj = new PessoaDAO();
+$invObj = new InventarioDAO();
+
 if(isset($_GET["keyP"])&&isset($_GET["keyI"])&&isset($_GET["ardCode"])){ // testa pra ver se o arduino enviou corretamente os dados
 	$hexPessoa = $_GET["keyP"];
 	$hexInventario = $_GET["keyI"];
 	$codeArduino = $_GET["ardCode"];
 
-	$conn = new mysqli("localhost", "root", "123", "saci");  // conexão ao BD
-
-	$rs1 = $conn->query("SELECT * FROM Pessoa WHERE pessoa_key='".$hexPessoa."';");
-	if($rs1->num_rows==1){  // se o retorno do select existir, então existe uma pessoa com aquela Key
+	if($peopleObj->isPeople($hexPessoa)){
 		$peopleExists = true;
+		if($invObj->isInventory($hexInventario)){
+			$inventoryExists = true;
+		}
+	}else if($invObj->isInventory($hexPessoa)){
+		if($peopleObj->isPeople($hexInventario)){
+			$temp = $hexPessoa;
+			$hexPessoa = $hexInventario;
+			$hexInventario = $temp;
+			$inventoryExists = true;
+			$peopleExists = true;
+		}
 	}
 
-	mysqli_close($conn);  // fecha conexão, se não fechar a próxima consulta não é feita
-	$conn = new mysqli("localhost", "root", "123", "saci");
-
-	$rs2 = $conn->query("SELECT * FROM Inventario WHERE inventario_key='".$hexInventario."';");
-	if($rs2->num_rows==1){  // se o retorno do select existir, então existe um inventario com aquela Key
-		$inventoryExists = true;
-	}
 	if($peopleExists && $inventoryExists){  // Ambas as tags existem, inicia o processo de insert/update na tabela Historico.
 		// DEU TUDO CERTO
-		$OpObj = new HistoricoDAO($hexPessoa, $hexInventario, $codeArduino, $date, $time);
+		$OpObj = new TransacaoController($hexPessoa, $hexInventario, $codeArduino, $date, $time);
 		echo $OpObj->opFunction();
 		exit;
 	}else{  // Qualquer uma das tags não foi encontrada.
