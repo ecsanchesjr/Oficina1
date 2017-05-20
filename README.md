@@ -1,8 +1,8 @@
 # SACI - Sistema Automatizado de Gerenciamento de Inventário
 
-	Projeto realizado por dois alunos da UTFPR-CP(Universidade Tecnológica Federal do Paraná - Campus Cornélio Procópio), o projeto consiste em um protótipo de sistema WEB que controla os empréstimos e devoluções de diversos itens dispostos num inventário.
+Projeto realizado por dois alunos da UTFPR-CP(Universidade Tecnológica Federal do Paraná - Campus Cornélio Procópio), o projeto consiste em um protótipo de sistema WEB que controla os empréstimos e devoluções de diversos itens dispostos num inventário.
 
-	O projeto foi moldado teoricamente em torno das necessidades organizacionais presentes na própria universidade. É extremamente necessário existir um controle dos utensílios gerais que podem estar sempre sendo utilizados por diversas pessoas, o sistema prevê esse controle. Embora tenha sido moldado em torno desta necessidade, o projeto foi desenvolvido de forma que seja possível aplicá-lo em qualquer outra situação, possivelmente com alguma mudança mínima no código.
+O projeto foi moldado teoricamente em torno das necessidades organizacionais presentes na própria universidade. É extremamente necessário existir um controle dos utensílios gerais que podem estar sempre sendo utilizados por diversas pessoas, o sistema prevê esse controle. Embora tenha sido moldado em torno desta necessidade, o projeto foi desenvolvido de forma que seja possível aplicá-lo em qualquer outra situação, possivelmente com alguma mudança mínima no código.
 
 ## Funcionamento do sistema
 
@@ -33,4 +33,4 @@
 
 ## Andamento do Projeto
 
-	O projeto ainda está em fase de desenvolvimento pelos alunos. 
+O projeto ainda está em fase de desenvolvimento pelos alunos. 
