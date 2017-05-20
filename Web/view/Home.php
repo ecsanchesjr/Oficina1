@@ -19,15 +19,11 @@
 				include("../model/UserDAO.php");
 				$obj = new UserDAO();
 				$nick = $_SESSION["usuario"];
-				echo '<p class="textInfos textCenter">'.$obj->getNameUser($nick).'</p>';
-
-				$nick = $_SESSION["usuario"];
-				echo '<p class="textInfos textCenter">'.$obj->getReUser($nick).'</p>';
+				echo '<p class="textInfos textCenter textFontSize">'.$obj->getNameUser($nick).'</p>';
+				echo '<p class="textInfos textCenter textFontSize">'.$obj->getReUser($nick).'</p>';
 			?>
 		</div>
 
-		<div class="sairAlign">
-			<a class="btn btn-default myBtn" href="../index.php" role="button">Sair</a>
-		</div>
+		<a class="btn btn-default myBtn sairAlign" href="../index.php" role="button">Sair</a>
 	</body>
 </html>

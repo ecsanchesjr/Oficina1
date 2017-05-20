@@ -28,6 +28,9 @@
 	font-family: 'Code Bold';
 }
 
+.textFontSize{
+	font-size: 17px;
+}
 
 .titleAlign{
 	position: relative;
@@ -41,5 +44,6 @@
 
 .sairAlign{
 	position: relative;
-	top: 550px;
+	top: 570px;
+	left: 90%;
 }

@@ -19,8 +19,8 @@
 					passwd: $("#passwd").val()
 				},
 				function(data, status){
-					document.getElementById("MensagemModal").innerHTML = data;
-					$("#Modal").modal(); //Modal de debug
+					//document.getElementById("MensagemModal").innerHTML = data;
+					//$("#Modal").modal(); //Modal de debug
 					if(data == "error"){  // USUÁRIO OU SENHA ERRADOS
 						document.getElementById("labelPass").innerHTML = "Usuário e/ou Senha inválidos.";
 					}else if(data == "ok"){
@@ -69,7 +69,7 @@
 					</div>
 				</form>
 		</div>
-
+	</div>
 		<div class="modal fade" id="Modal" role="dialog">
 		<div class="modal-dialog">
 		  <!-- Conteudo do modal-->
@@ -87,6 +87,5 @@
 		  </div>
 
 		</div>
-	 </div>
 	</body>
 </html>
