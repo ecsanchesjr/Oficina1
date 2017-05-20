@@ -2,7 +2,7 @@
 
 Projeto realizado por dois alunos da UTFPR-CP(Universidade Tecnológica Federal do Paraná - Campus Cornélio Procópio), o projeto consiste em um protótipo de sistema WEB que controla os empréstimos e devoluções de diversos itens dispostos num inventário.
 
-O projeto foi moldado teoricamente em torno das necessidades organizacionais presentes na própria universidade. É extremamente necessário existir um controle dos utensílios gerais que podem estar sempre sendo utilizados por diversas pessoas, o sistema prevê esse controle. Embora tenha sido moldado em torno desta necessidade, o projeto foi desenvolvido de forma que seja possível aplicá-lo em qualquer outra situação, possivelmente com alguma mudança mínima no código.
+O projeto foi moldado em torno das necessidades organizacionais presentes na própria universidade. É necessário existir um controle dos utensílios gerais que podem estar sempre sendo utilizados por diversas pessoas, o sistema garante esse controle. Embora tenha sido moldado em torno desta necessidade, o projeto foi desenvolvido de forma que seja possível aplicá-lo em qualquer outra situação, em casos especiais podem ser necessárias algumas alterações.
 
 ## Funcionamento do sistema
 
