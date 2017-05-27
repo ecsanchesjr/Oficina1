@@ -19,6 +19,23 @@ body{
 }
 
 
+.godDiv{
+	width: 80%;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1%;
+	background-color: #18784F;
+	padding-bottom: 1%;
+}
+
+
+.godDivBorder{
+	border-radius: 50px;
+	box-shadow: 2px 5px 5px 1px #034d27;
+}
+
+
 .title{
 	font-family: 'Phenomena';
 	color: rgb(255, 255, 255);

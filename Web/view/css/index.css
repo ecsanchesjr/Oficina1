@@ -9,10 +9,11 @@
 	height: 30px;
 }
 
-LABEL.text{
+.text{
 	color: #ffffff;
 	text-shadow: 1px 1px black;
 }
+
 
 .minInfo{
 	font-size: 10px;
@@ -28,19 +29,17 @@ LABEL.text{
 }
 
 DIV.centerFull{
-	position: absolute;
-	top: 30%;
-	left: 50%;
-   margin-right: -50%;
-	transform: translate(-50%, -50%);
+	position: relative;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 DIV.centerTop{
-	position: absolute;
-	top: 10%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
+	position: relative;
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .myBtn{

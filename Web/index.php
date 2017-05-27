@@ -33,44 +33,46 @@
 	</head>
 
 	<body>
-		<div class="centerTop">
-				<p  class="title giant-title">Sistema Automatizado de Controle de Inventário</p>
-		</div>
-		<br />
-			<div class="centerFull">
-				<form onsubmit="startLogin();return false;" id="target" class="form-horizontal">
-					<div class="form-group">
-						<label class="control-label col-sm-2 text" for="nick">Usuário: </label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control inputControl" id="nick" placeholder="Entre com o usuário." pattern="^[a-zA-Z][a-zA-Z0-9]{3,}" required/>
-							<label class="minInfo" id="labelUser">Mínimo de quatro caracteres e não pode começar com número.</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2 text" for="pwd">Senha: </label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control inputControl" id="passwd" placeholder="Entre com a senha." required/>
-							<label class="minInfo errLabel" id="labelPass"></label>
-
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<div class="checkbox">
-								<label><input type="checkbox">Lembrar dados</label>
+		<div class = "godDiv godDivBorder">
+			<div class="centerTop">
+					<p  class="title giant-title">Sistema Automatizado de Controle de Inventário</p>
+			</div>
+			<br />
+				<div class="centerFull">
+					<form onsubmit="startLogin();return false;" id="target" class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-2 text" for="nick">Usuário: </label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control inputControl" id="nick" placeholder="Entre com o usuário." pattern="^[a-zA-Z][a-zA-Z0-9]{3,}" required/>
+								<label class="minInfo text" id="labelUser">Mínimo de quatro caracteres e não pode começar com número.</label>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default myBtn">Entrar</button>
-							<a class="btn btn-default myBtn" href="view/Cadastro.php" role="button">Cadastrar</a>
+						<div class="form-group">
+							<label class="control-label col-sm-2 text" for="pwd">Senha: </label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control inputControl" id="passwd" placeholder="Entre com a senha." required/>
+								<label class="minInfo errLabel" id="labelPass"></label>
+
+							</div>
 						</div>
-					</div>
-				</form>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<div class="checkbox">
+									<label class="text"><input type="checkbox">Lembrar dados</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default myBtn">Entrar</button>
+								<!---<a class="btn btn-default myBtn" href="view/Cadastro.php" role="button">Cadastrar</a>-->
+							</div>
+						</div>
+					</form>
+			</div>
 		</div>
 	</div>
-		<div class="modal fade" id="Modal" role="dialog">
+	<div class="modal fade" id="Modal" role="dialog">
 		<div class="modal-dialog">
 		  <!-- Conteudo do modal-->
 		  <div class="modal-content">
@@ -85,7 +87,7 @@
 			   <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 			 </div>
 		  </div>
-
 		</div>
+	</div>
 	</body>
 </html>
