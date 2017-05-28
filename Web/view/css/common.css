@@ -51,3 +51,7 @@ body{
 .textCenter{
 	text-align: center;
 }
+
+.clear{
+	clear:both;
+}

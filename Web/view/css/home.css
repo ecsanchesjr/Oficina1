@@ -8,6 +8,11 @@
 	overflow:hidden;
 }
 
+#lineHr{
+	width:100%;
+	border-bottom: 2px dashed #000000;
+}
+
 .infoGroup{
 	background-color: #1C8C1C;
 
@@ -78,10 +83,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1%;
-}
-
-.clear{
-	clear:both;
 }
 
 .godDiv{
