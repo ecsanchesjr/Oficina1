@@ -66,6 +66,10 @@
 	width: 140px;
 }
 
+.modalBtn{
+	width: 24%;
+}
+
 .sairAlign{
 	position: relative;
 	top: 570px;
@@ -103,6 +107,20 @@
 .btnDiv{
 	width: 35%;
 	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.modalDivRelPadrao{
+	width: 88%;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.modalTitleCenter{
+	width: 39%;
+	position: relative;
 	margin-left: auto;
 	margin-right: auto;
 }

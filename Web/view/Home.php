@@ -7,9 +7,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<link href="datatables/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
+		<link href="datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/home.css" />
+		<script src="./datatables/jquery.dataTables.min.js"></script>
+		<script src="./datatables/dataTables.select.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="./datatables/select.dataTables.min.css">
+		<script type="text/javascript" language="javascript" src="./datatables/dataTables.buttons.min.js"></script>
 		<script>
 			$(document).ready(function(){
 				$("#txtSearch").on("keydown", function(){
@@ -59,6 +65,7 @@
 						code: 3
 					},
 					function(data,status){
+
 					});
 				});
 			}
@@ -69,9 +76,13 @@
 						code: 4
 					},
 					function(data,status){
+						document.getElementById("TabelaConsultas").innerHTML = data;
 					});
 				});
 			}
+		</script>
+		<script>
+
 		</script>
 	</head>
 	<body>
@@ -101,6 +112,10 @@
 				<input type="text" id="txtSearch" placeholder="Buscar localização de um item" class="form-control">
 				<i id="btnSearch" class="glyphicon glyphicon-search form-control-feedback"></i>
 			</div>
+
+			<table id = "TabelaConsultas" class="display">
+
+			</table>
 		</div> <!-- GOD div-->
 
 		<div class="modal fade" id="Modal" role="dialog">
@@ -109,20 +124,20 @@
 			  <div class="modal-content">
 				 <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Selecionar opções de relatórios</h4>
+					<h3 class="modal-title modalTitleCenter">Selecionar opções de relatórios</h3>
 				 </div>
 				 <div id="MensagemModal" class="modal-body">
-				 	<div id="padraoRel">
-						<a id="btnEmp" class="btn btn-default" onclick="Relatory1()" role="button">Itens emprestados atualmente</a>
-						<a id="btnHistDev" class="btn btn-default" onclick="Relatory2()" role="button">Histórico de devoluções</a>
-						<a id="btnHistGeral" class="btn btn-default" onclick="Relatory3()" role="button">Histórico geral</a>
-						<a id="btnFreq" class="btn btn-default" onclick="Relatory4()" role="button">Frequência de Empréstimo</a>
+				 	<div id="padraoRel" class="modalDivRelPadrao">
+						<a id="btnEmp" class="btn btn-default modalBtn" onclick="Relatory1()" role="button">Empréstimos abertos</a>
+						<a id="btnHistDev" class="btn btn-default modalBtn" onclick="Relatory2()" role="button">Histórico</a>
+						<a id="btnFreq" class="btn btn-default modalBtn" onclick="Relatory3()" role="button">Frequência de itens</a>
+						<a id="btnFreq" class="btn btn-default modalBtn" onclick="Relatory4()" role="button">Itens em salas erradas</a>
 					</div>
 					<div id="lineHr"><br /></div>
 					<div class="clear"></div>
 					<br />
 					<div>
-						<h4>Personalizar Relatório</h4>
+						<h4 class="modalTitleCenter" style="width: 20.5%">Personalizar Relatório</h4>
 					</div>
 					<div id="personRel">
 						<label class="text"><input id="checkRel" type="checkbox">Nome do item</label>
