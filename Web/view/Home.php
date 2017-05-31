@@ -17,6 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="./datatables/select.dataTables.min.css">
 		<script type="text/javascript" language="javascript" src="./datatables/dataTables.buttons.min.js"></script>
 		<script>
+			var code;
 			$(document).ready(function(){
 				$("#txtSearch").on("keydown", function(){
 					if(event.keyCode == 13 && $("#txtSearch").val() != ""){
@@ -33,49 +34,19 @@
 		<script>
 			$(document).ready(function(){
 				$("#btnRelatory").click(function(){
-					$("#Modal").modal();
+					$("#ModalRel").modal();
 				});
 			});
 		</script>
 		<script>
-			function Relatory1(){
+			function Relatory(){
 				$(document).ready(function(){
 					$.post("../controller/RelatoriosController.php",
 					{
-						code: 1
+						code: code
 					},
 					function(data,status){
-					});
-				});
-			}
-			function Relatory2(){
-				$(document).ready(function(){
-					$.post("../controller/RelatoriosController.php",
-					{
-						code: 2
-					},
-					function(data,status){
-					});
-				});
-			}
-			function Relatory3(){
-				$(document).ready(function(){
-					$.post("../controller/RelatoriosController.php",
-					{
-						code: 3
-					},
-					function(data,status){
-
-					});
-				});
-			}
-			function Relatory4(){
-				$(document).ready(function(){
-					$.post("../controller/RelatoriosController.php",
-					{
-						code: 4
-					},
-					function(data,status){
+						$("#ModalRel").modal('hide');
 						document.getElementById("TabelaConsultas").innerHTML = data;
 					});
 				});
@@ -118,7 +89,7 @@
 			</table>
 		</div> <!-- GOD div-->
 
-		<div class="modal fade" id="Modal" role="dialog">
+		<div class="modal fade" id="ModalRel" role="dialog">
 			<div class="modal-dialog modal-lg">
 			  <!-- Conteudo do modal-->
 			  <div class="modal-content">
@@ -128,10 +99,10 @@
 				 </div>
 				 <div id="MensagemModal" class="modal-body">
 				 	<div id="padraoRel" class="modalDivRelPadrao">
-						<a id="btnEmp" class="btn btn-default modalBtn" onclick="Relatory1()" role="button">Empréstimos abertos</a>
-						<a id="btnHistDev" class="btn btn-default modalBtn" onclick="Relatory2()" role="button">Histórico</a>
-						<a id="btnFreq" class="btn btn-default modalBtn" onclick="Relatory3()" role="button">Frequência de itens</a>
-						<a id="btnFreq" class="btn btn-default modalBtn" onclick="Relatory4()" role="button">Itens em salas erradas</a>
+						<a id="btnEmp" class="btn btn-default modalBtn" onclick="Relatory();code=1" role="button">Empréstimos abertos</a>
+						<a id="btnHistDev" class="btn btn-default modalBtn" onclick="Relatory();code=2" role="button">Histórico</a>
+						<a id="btnFreq" class="btn btn-default modalBtn" onclick="Relatory();code=3" role="button">Frequência de itens</a>
+						<a id="btnFreq" class="btn btn-default modalBtn" onclick="Relatory();code=4" role="button">Itens em salas erradas</a>
 					</div>
 					<div id="lineHr"><br /></div>
 					<div class="clear"></div>
