@@ -12,10 +12,14 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/home.css" />
-		<script src="./datatables/jquery.dataTables.min.js"></script>
-		<script src="./datatables/dataTables.select.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="./datatables/select.dataTables.min.css">
-		<script type="text/javascript" language="javascript" src="./datatables/dataTables.buttons.min.js"></script>
+		<script src="datatables/jquery.dataTables.min.js"></script>
+		<script src="datatables/dataTables.select.min.js"></script>
+		<script src="datatables/dataTables.buttons.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="datatables/select.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="datatables/jquery.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="datatables/buttons.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="css/table.css">
+
 		<script>
 			var code;
 			$(document).ready(function(){
@@ -46,14 +50,51 @@
 						code: code
 					},
 					function(data,status){
+						if(tabelaC != null){
+							$("#TabelaConsultas").DataTable().clear();
+							$("#TabelaConsultas").DataTable().destroy();
+							var thead = $("#TabelaConsultas > thead");
+							thead.remove();
+							var tbody = $("#TabelaConsultas > tbody");
+							tbody.remove();
+						}
 						$("#ModalRel").modal('hide');
 						document.getElementById("TabelaConsultas").innerHTML = data;
+						startTable()
 					});
 				});
 			}
 		</script>
 		<script>
-
+			var tabelaC=null;
+			var relP;
+			function startTable(){
+				switch(code){
+					case 1:
+						relP = "EMPRÉSTIMOS ATIVOS ATUALMENTE";
+						break;
+					case 2:
+						relP = "HISTÓRICO DE DEVOLUÇÕES";
+						break;
+					case 3:
+						relP = "FREQUÊNCIA DE EMPRÉSTIMO POR ITEM";
+						break;
+					case 4:
+						relP = "ITENS FORA DA SALA DE ORIGEM";
+						break;
+				}
+				document.getElementById("tableP").innerHTML = relP;
+				$(document).ready(function(){
+					tabelaC = $("#TabelaConsultas").DataTable({
+						bSort: true,
+						retrieve: true,
+						ordering: true,
+						paginate: true,
+						bFilter: true,
+						bInfo: true
+					});
+				});
+			}
 		</script>
 	</head>
 	<body>
@@ -84,9 +125,11 @@
 				<i id="btnSearch" class="glyphicon glyphicon-search form-control-feedback"></i>
 			</div>
 
-			<table id = "TabelaConsultas" class="display">
-
-			</table>
+			<!--- tabela de relatórios --->
+			<div class="tableDiv">
+				<h3 id="tableP" class="textInfos textColor" align="center"></h3>
+				<table id = "TabelaConsultas" class="display table-bordered centerTable styleBasic cell-border compact"></table>
+			</div>
 		</div> <!-- GOD div-->
 
 		<div class="modal fade" id="ModalRel" role="dialog">

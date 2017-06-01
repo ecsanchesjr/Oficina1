@@ -14,23 +14,23 @@ class RelatoriosDAO{
 			$obj = $conn->connectionDB();
 			$RS = $obj->query($query);
 
-			echo "<thead>
+			echo '<thead>
 		            <tr>
-		               <th>Nome do Item</th>
-		               <th>Sala Atual</th>
-		               <th>Bloco Atual</th>
-		               <th>Data de Empréstimo</th>
-		               <th>Pessoa que Emprestou</th>
+		               <th class="cel-width">Nome do Item</th>
+		               <th class="cel-width">Sala Atual</th>
+		               <th class="cel-width">Bloco Atual</th>
+		               <th class="cel-width">Data de Empréstimo</th>
+		               <th class="cel-width">Pessoa que Emprestou</th>
 		            </tr>
         			</thead>
-					<tbody>";
+					<tbody>';
 
 			while($RowsData = $RS->fetch_assoc()){
 				echo "<tr>
 		               <td>".$RowsData['inventario_nome']."</td>
 		               <td>".$RowsData['sala_numero']."</td>
 		               <td>".$RowsData['sala_bloco']."</td>
-		               <td>".$RowsData['emprestimo_data']."</td>
+		               <td>".date('d/m/Y H:i:s', strtotime($RowsData['emprestimo_data']))."</td>
 							<td>".$RowsData['pessoa_nome']."</td>
             		</tr>";
 			}
@@ -40,7 +40,6 @@ class RelatoriosDAO{
 
 		function getListHistoricDevolutionsItems(){
 			//Irá retornar os dados de historico de devoluções
-
 			$query = "SELECT i.inventario_nome, s.sala_numero, s.sala_bloco, h.historico_dataemprestimo, h.historico_datadevolucao, p.pessoa_nome ";
 			$query .= "FROM Inventario i, Historico h, Pessoa p, Sala s ";
 			$query .= "WHERE i.inventario_id = h.historico_inventario AND h.historico_pessoa = p.pessoa_regescola AND i.inventario_sala = s.sala_id";
@@ -49,18 +48,18 @@ class RelatoriosDAO{
 			$obj = $conn->connectionDB();
 			$RS = $obj->query($query) or die($obj->error."");
 
-			echo "<thead>
+			echo '<thead>
 		            <tr>
-		               <th>Nome do Item</th>
-		               <th>Sala Atual</th>
-		               <th>Bloco Atual</th>
-		               <th>Data de Empréstimo</th>
-							<th>Data de Devolução</th>
-		               <th>Pessoa que Emprestou</th>
-							<th>Pessoa que Devolveu</th>
+		               <th class="cel-width">Nome do Item</th>
+		               <th class="cel-width">Sala Atual</th>
+		               <th class="cel-width">Bloco Atual</th>
+		               <th class="cel-width">Data de Empréstimo</th>
+							<th class="cel-width">Data de Devolução</th>
+		               <th class="cel-width">Pessoa que Emprestou</th>
+							<th class="cel-width">Pessoa que Devolveu</th>
 		            </tr>
         			</thead>
-					<tbody>";
+					<tbody>';
 
 			while($RowsData = $RS->fetch_assoc()){
 				$query2 = "SELECT p.pessoa_nome ";
@@ -88,6 +87,7 @@ class RelatoriosDAO{
 		}
 
 		function getListFrequencyItem(){
+			// Retorna a frequencia de emprestimo de cada item
 			$qtdTotal = $this->getTotalFreqAbs();
 			$queryInv = "SELECT DISTINCT inventario_nome FROM Inventario";
 
@@ -95,14 +95,14 @@ class RelatoriosDAO{
 			$obj = $conn->connectionDB();
 			$rs = $obj->query($queryInv);
 
-			echo "<thead>
+			echo '<thead>
 						<tr>
-							<th>Nome do Item</th>
-							<th>Qtd de Empréstimos</th>
-							<th>Frequência Relativa(%)[".$qtdTotal."]</th>
+							<th class="cel-width">Nome do Item</th>
+							<th class="cel-width">Qtd de Empréstimos</th>
+							<th class="cel-width">Frequência Relativa(%)</th>
 						</tr>
 					</thead>
-					<tbody>";
+					<tbody>';
 
 			while($row = $rs->fetch_assoc()){
 				$count = 0;
@@ -135,9 +135,12 @@ class RelatoriosDAO{
 							<td>".$freqRel."</td>
 						</tr>";
 			}
+			echo "</tbody>";
+			mysqli_close($obj);
 		}
 
 		function getTotalFreqAbs(){
+			// Retorna o total de emprestimos geral já feitos
 			$query = "SELECT count(*) + ";
 			$query .= "(SELECT count(*) FROM Emprestimo) ";
 			$query .= "FROM Historico";
@@ -162,16 +165,16 @@ class RelatoriosDAO{
 			$obj = $conn->connectionDB();
 			$ResultSet = $obj->query($query);
 
-			echo "<thead>
+			echo '<thead>
 		            <tr>
-		                <th>Nome do Item</th>
-		                <th>Sala Atual</th>
-		                <th>Bloco Atual</th>
-		                <th>Sala de Origem</th>
-		                <th>Bloco de Origem</th>
+		                <th class="cel-width">Nome do Item</th>
+		                <th class="cel-width">Sala Atual</th>
+		                <th class="cel-width">Bloco Atual</th>
+		                <th class="cel-width">Sala de Origem</th>
+		                <th class="cel-width">Bloco de Origem</th>
 		            </tr>
         			</thead>
-					<tbody>";
+					<tbody>';
 
 			//fazer um while dando echo em cada iteração
 			while($RowsData = $ResultSet->fetch_assoc()){
@@ -194,6 +197,5 @@ class RelatoriosDAO{
 			}
 			echo "</tbody>";
 		}
-
 }
 ?>

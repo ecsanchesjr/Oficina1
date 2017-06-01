@@ -157,16 +157,16 @@ void msgProblema(){
 
 void msgEmpres(){
 	lcd.clear();
-	lcd.print("   LEVEL UP!    ");
+	lcd.print("Emprestimo bem");
 	lcd.setCursor(0,1);
-	lcd.print("   EMPRESTIMO   ");
+	lcd.print("Sucedido");
 }
 
 void msgDevol(){
   lcd.clear();
-  lcd.print("   LEVEL UP!    ");
+  lcd.print("Devolucao bem");
   lcd.setCursor(0,1);
-  lcd.print("   DEVOLUCAO   ");
+  lcd.print("Sucedida");
 }
 
 void soft_reset() {
