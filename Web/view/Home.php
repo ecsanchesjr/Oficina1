@@ -113,16 +113,22 @@
 						echo '<p class="textInfos textCenter textFontSize textColor">'.$obj->getReUser($nick).'</p>';
 					?>
 				</div>
-				<div class="btnDiv"> <!-- Botões -->
+				<div class="btnDiv dropdown"> <!-- Botões -->
 					<a id="btnRelatory" class="btn btn-default myBtn" role="button">Gerar Relatório</a>
 					<a id="btnControlPanel" class="btn btn-default myBtn" role="button">Painel de Controle</a>
-					<a class="btn btn-default myBtn" href="../index.php" role="button">Sair do Sistema</a>
+					<button class="btn btn-default myBtn dropdown-toggle" type="button" data-toggle="dropdown">Opções
+						<span class="caret"></span></button>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a class="dropdown-item" href="Ajuda.html">Ajuda</a></li>
+						<li><a class="dropdown-item" href="../index.php">Sair</a></li>
+					</ul>
 				</div>
 			</div>
 			<!--- Div de busca -->
 			<div id="divSearch" class="form-group has-feedback divSearch">
 				<input type="text" id="txtSearch" placeholder="Buscar localização de um item" class="form-control">
-				<i id="btnSearch" class="glyphicon glyphicon-search form-control-feedback"></i>
+					<i class="glyphicon glyphicon-search form-control-feedback"></i>
+				</input>
 			</div>
 
 			<!--- tabela de relatórios --->
@@ -156,7 +162,6 @@
 					<div id="personRel">
 						<label class="text"><input id="checkRel" type="checkbox">Nome do item</label>
 					</div>
-
 				 </div>
 				 <div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
