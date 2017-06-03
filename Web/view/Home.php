@@ -91,14 +91,18 @@
 						ordering: true,
 						paginate: true,
 						bFilter: true,
-						bInfo: true
+						bInfo: true,
+						language:{
+							search: "Filtrar: "
+							//searchPlaceholder: "Digite o filtro..."
+						}
 					});
 				});
 			}
 		</script>
 	</head>
 	<body>
-		<div class="godDiv godDivBorder"> <!-- GOD div -->
+		<div id="divGod" class="godDiv godDivBorder"> <!-- GOD div -->
 			<p class="title giant-title titleAlign textCenter">
 				Seja Bem-Vindo ao Portal do SACI
 			</p>

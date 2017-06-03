@@ -15,7 +15,6 @@
 
 .infoGroup{
 	background-color: #1C8C1C;
-
 	/*width: 1308px;
 	height: 70px;*/
 	width: 100%;
@@ -81,6 +80,10 @@
 	height: 30px;
 }
 
+input{
+	color: #000000;
+}
+
 .divSearch{
 	width: 50%;
 	position: relative;
@@ -105,7 +108,7 @@
 }
 
 .btnDiv{
-	width: 35%;
+	width: 36%;
 	position:relative;
 	margin-left: auto;
 	margin-right: auto;

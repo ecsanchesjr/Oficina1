@@ -59,7 +59,6 @@ class EmprestimoDAO{
 		$insert .= "('".$inventario."', '".$pessoa."', '".$dayDate." ".date_format($timeDate, 'H:i:s')."');";
 
 		$obj->query($insert);
-		echo "BATATA";
 		mysqli_close($obj);
 	}
 

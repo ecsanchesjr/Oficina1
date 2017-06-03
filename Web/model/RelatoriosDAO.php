@@ -54,8 +54,8 @@ class RelatoriosDAO{
 		               <th class="cel-width">Sala Atual</th>
 		               <th class="cel-width">Bloco Atual</th>
 		               <th class="cel-width">Data de Empréstimo</th>
-							<th class="cel-width">Data de Devolução</th>
-		               <th class="cel-width">Pessoa que Emprestou</th>
+							<th class="cel-width">Pessoa que Emprestou</th>
+		               <th class="cel-width">Data de Devolução</th>
 							<th class="cel-width">Pessoa que Devolveu</th>
 		            </tr>
         			</thead>

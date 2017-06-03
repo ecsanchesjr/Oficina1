@@ -24,6 +24,35 @@
 	padding-left: 5%;
 	padding-right: 5%;
 }
+
+.dataTables_wrapper .dataTables_filter {
+   color:#ffffff !important;
+	text-shadow: 1px 1px 1px black;
+   text-align: right;
+}
+
+.dataTables_wrapper .dataTables_length {
+	color: #ffffff;
+	text-shadow: 1px 1px 1px black;
+   text-align: right;
+}
+
+select{
+	color: #000000;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+   color:#ffffff !important;
+	text-shadow: 1px 1px 1px black;
+   text-align: right;
+}
+
+.dataTables_wrapper .dataTables_info {
+   color:#ffffff !important;
+	text-shadow: 1px 1px 1px black;
+   text-align: right;
+}
+
 /*
 
 .dataTables_filter input{
