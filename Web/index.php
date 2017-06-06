@@ -35,7 +35,7 @@
 	<body>
 		<div class = "godDiv godDivBorder">
 			<div class="centerTop">
-					<p  class="title giant-title">Sistema Automatizado de Controle de Inventário</p>
+					<p class="title giant-title">Sistema Automatizado de Controle de Inventário</p>
 			</div>
 			<br />
 				<div class="centerFull">
@@ -71,23 +71,23 @@
 					</form>
 			</div>
 		</div>
-	</div>
-	<div class="modal fade" id="Modal" role="dialog">
-		<div class="modal-dialog">
-		  <!-- Conteudo do modal-->
-		  <div class="modal-content">
-			 <div class="modal-header">
-			   <button type="button" class="close" data-dismiss="modal">&times;</button>
-			   <h4 class="modal-title"></h4>
-			 </div>
-			 <div id="MensagemModal" class="modal-body">
-			  <p></p>
-			 </div>
-			 <div class="modal-footer">
-			   <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-			 </div>
-		  </div>
-		</div>
-	</div>
-	</body>
+	
+        <div class="modal fade" id="Modal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Conteudo do modal-->
+              <div class="modal-content">
+                 <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   <h4 class="modal-title"></h4>
+                 </div>
+                 <div id="MensagemModal" class="modal-body">
+                  <p></p>
+                 </div>
+                 <div class="modal-footer">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                 </div>
+              </div>
+            </div>
+        </div>
+    </body>
 </html>
