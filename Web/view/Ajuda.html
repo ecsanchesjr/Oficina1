@@ -12,29 +12,17 @@
 	<link href="css/ajuda.css" type="text/css" media="screen" rel="stylesheet" />
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+    
     <script>
         $(document).ready(function(){
-            $('#collapse1').on('shown.bs.collapse', function(){
-                $(this).parent().find('#span1').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign')
-            }) 
-            $('#collapse1').on('hidden.bs.collapse', function(){
-                $(this).parent().find('#span1').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign')
-            })
+            $('div.panel-collapse').on('show.bs.collapse', function(){
+                $(this).parent().find('span.glyphicon-plus-sign').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
+            });
             
-            $('#collapse2').on('shown.bs.collapse', function(){
-                $(this).parent().find('#span2').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign')
-            }) 
-            $('#collapse2').on('hidden.bs.collapse', function(){
-                $(this).parent().find('#span2').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign')
-            })
-            
-            $('#collapse3').on('shown.bs.collapse', function(){
-                $(this).parent().find('#span3').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign')
-            }) 
-            $('#collapse3').on('hidden.bs.collapse', function(){
-                $(this).parent().find('#span3').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign')
-            })
-        });
+            $('div.panel-collapse').on('hide.bs.collapse', function(){
+                $(this).parent().find('span.glyphicon-minus-sign').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
+            });
+        })
     </script>
     
 </head>
@@ -43,55 +31,57 @@
 		<h1 class="text-center title">Ajuda ao Usuário</h1>
 
 		<hr/>
-
-		<div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-
-				<div class="panel-heading">
-					<h4 class="panel-title">
-                            <a href="#collapse1" data-toggle="collapse" data-parent="#accordion">
-                                <span id="span1" class="glyphicon glyphicon-plus-sign"></span>
-                                Tópico 1
-                            </a>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><span class="glyphicon glyphicon-minus-sign"></span>
+                        Tópico #1
+                        </a>
                     </h4>
-                    
-				</div>
-				<div id="collapse1" class="panel-collapse collapse">
-					<div class="panel-body">
-						Texto referente ao tópico 1. Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto.
-					</div>
-				</div>
-
-				<div class="panel-heading" id="panelheading2">
-					<h4 class="panel-title">
-                            <a href="#collapse2" data-toggle="collapse" data-parent="#accordion">
-                                <span id="span2" class="glyphicon glyphicon-plus-sign"></span>
-                                Tópico  2
-                            </a>
-                        </h4>
-				</div>
-				<div id="collapse2" class="panel-collapse collapse">
-					<div class="panel-body">
-						Texto referente ao tópico 2.
-					</div>
-				</div>
-
-				<div class="panel-heading">
-					<h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse3" data-parent="#accordion">
-                                <span id="span3" class="glyphicon glyphicon-plus-sign"></span>
-                                Tópico 3
-                            </a>
-                        </h4>
-				</div>
-				<div id="collapse3" class="panel-collapse collapse">
-					<div class="panel-body">
-						AHFAKJSAKJDASKÇBSVAKBç
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
+                </div>
+                
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        Texto texto texto texto texto texto.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><span class="glyphicon glyphicon-plus-sign"></span>
+                        Tópico #2
+                        </a>
+                    </h4>
+                </div>
+                
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Texto texto texto texto texto texto.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><span class="glyphicon glyphicon-plus-sign"></span>
+                        Tópico #3
+                        </a>
+                    </h4>
+                </div>
+                
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Texto texto texto texto texto texto.
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+		
+    </div>
 </body>
 </html>
