@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start();?>
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -23,6 +24,9 @@
 		<script>
 			var code;
 			$(document).ready(function(){
+				$("#TableP").hide();
+			});
+			$(document).ready(function(){
 				$("#txtSearch").on("keydown", function(){
 					if(event.keyCode == 13 && $("#txtSearch").val() != ""){
 						$.post("../controller/BuscarController.php",
@@ -30,6 +34,9 @@
 						txtSearch: $("#txtSearch").val()
 					},
 				function(data, status){
+					document.getElementById("TabelaSearch").innerHTML = data;
+					$("#txtSearch").val("");
+					$("#ModalSearch").modal();
 				})
 					}
 				});
@@ -60,7 +67,7 @@
 						}
 						$("#ModalRel").modal('hide');
 						document.getElementById("TabelaConsultas").innerHTML = data;
-						startTable()
+						startTable();
 					});
 				});
 			}
@@ -93,10 +100,12 @@
 						bFilter: true,
 						bInfo: true,
 						language:{
-							search: "Filtrar: "
-							//searchPlaceholder: "Digite o filtro..."
+							search: "",
+							//search: "Filtrar: "
+							searchPlaceholder: "Filtrar consulta"
 						}
 					});
+					$('div.dataTables_filter input').addClass("form-control inputFilter");
 				});
 			}
 		</script>
@@ -109,7 +118,6 @@
 			<div class="infoGroup parent">
 				<div>
 					<?php
-						session_start();
 						include("../model/UserDAO.php");
 						$obj = new UserDAO();
 						$nick = $_SESSION["usuario"];
@@ -165,6 +173,26 @@
 					</div>
 					<div id="personRel">
 						<label class="text"><input id="checkRel" type="checkbox">Nome do item</label>
+					</div>
+				 </div>
+				 <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				 </div>
+			  </div>
+			</div>
+		</div>
+
+		<!-- Modal de Resultados da Busca -->
+		<div class="modal fade" id="ModalSearch" role="dialog">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				 <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title modalTitleCenterSearch">Resultados da busca</h3>
+				 </div>
+				 <div id="msgModal" class="modal-body">
+						<div class="tableDivSearch">
+					 	<table id = "TabelaSearch" class="display centerTable styleBasic cell-border tableSearch"></table>
 					</div>
 				 </div>
 				 <div class="modal-footer">

@@ -71,7 +71,7 @@
 					</form>
 			</div>
 		</div>
-	
+		<!--- MODAL DE DEBUG -->
         <div class="modal fade" id="Modal" role="dialog">
             <div class="modal-dialog">
               <!-- Conteudo do modal-->
