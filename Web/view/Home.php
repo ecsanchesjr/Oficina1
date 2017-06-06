@@ -22,6 +22,17 @@
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 
 		<script>
+			function destroyTable(){
+				$("#TabelaConsultas").DataTable().clear();
+				$("#TabelaConsultas").DataTable().destroy();
+				var thead = $("#TabelaConsultas > thead");
+				thead.remove();
+				var tbody = $("#TabelaConsultas > tbody");
+				tbody.remove();
+			}
+			function clearTable(){
+				$("#tabelaDivConsultas").hide();
+			}
 			var code;
 			$(document).ready(function(){
 				$("#TableP").hide();
@@ -58,12 +69,13 @@
 					},
 					function(data,status){
 						if(tabelaC != null){
-							$("#TabelaConsultas").DataTable().clear();
+							/*$("#TabelaConsultas").DataTable().clear();
 							$("#TabelaConsultas").DataTable().destroy();
 							var thead = $("#TabelaConsultas > thead");
 							thead.remove();
 							var tbody = $("#TabelaConsultas > tbody");
-							tbody.remove();
+							tbody.remove();*/
+							destroyTable();
 						}
 						$("#ModalRel").modal('hide');
 						document.getElementById("TabelaConsultas").innerHTML = data;
@@ -106,6 +118,7 @@
 						}
 					});
 					$('div.dataTables_filter input').addClass("form-control inputFilter");
+					$("#tabelaDivConsultas").show();
 				});
 			}
 		</script>
@@ -127,7 +140,7 @@
 				</div>
 				<div class="btnDiv dropdown"> <!-- Botões -->
 					<a id="btnRelatory" class="btn btn-default myBtn" role="button">Gerar Relatório</a>
-					<a id="btnControlPanel" class="btn btn-default myBtn" role="button">Painel de Controle</a>
+					<!-- <a id="btnControlPanel" class="btn btn-default myBtn" role="button">Painel de Controle</a> -->
 					<button class="btn btn-default myBtn dropdown-toggle" type="button" data-toggle="dropdown">Opções
 						<span class="caret"></span></button>
 					<ul class="dropdown-menu dropdown-menu-right">
@@ -144,7 +157,7 @@
 			</div>
 
 			<!--- tabela de relatórios --->
-			<div class="tableDiv">
+			<div id="tabelaDivConsultas" class="tableDiv">
 				<h3 id="tableP" class="textInfos textColor" align="center"></h3>
 				<table id = "TabelaConsultas" class="display table-bordered centerTable styleBasic cell-border compact"></table>
 			</div>
