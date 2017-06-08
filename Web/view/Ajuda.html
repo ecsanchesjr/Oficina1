@@ -27,61 +27,144 @@
     
 </head>
 <body>
-	<div class="godDiv godDivBorder">
+	<div class="godDiv godDivBorder row">
 		<h1 class="text-center title">Ajuda ao Usuário</h1>
 
 		<hr/>
-        <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><span class="glyphicon glyphicon-minus-sign"></span>
-                        Tópico #1
-                        </a>
-                    </h4>
-                </div>
-                
-                <div id="collapse1" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                        Texto texto texto texto texto texto.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><span class="glyphicon glyphicon-plus-sign"></span>
-                        Tópico #2
-                        </a>
-                    </h4>
-                </div>
-                
-                <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        Texto texto texto texto texto texto.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><span class="glyphicon glyphicon-plus-sign"></span>
-                        Tópico #3
-                        </a>
-                    </h4>
-                </div>
-                
-                <div id="collapse3" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        Texto texto texto texto texto texto.
-                    </div>
-                </div>
-            </div>
         
+        <div class="col-xs-offset-1 col-xs-10">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><span class="glyphicon glyphicon-minus-sign"></span>
+                            SACI - Sistema Automatizado de Controle de Inventário
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <p class="text-justify">
+                                O sistema SACI possui como objetivo a automatização do registro de entrada e saída de equipamentos cadastrados no sistema. O recurso web desse sistema irá ajudá-lo a gerar relatórios que irão mostrar o status das entradas e saídas (devoluções e empréstimos) dos equipamentos. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><span class="glyphicon glyphicon-plus-sign"></span>
+                            A opção Gerar Relatório
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p class="text-justify">
+                                O botão Gerar Relatório abre uma janela com quatro opções de relatório a ser gerado:
+                                <ul>
+                                    <li><a href="#collapse4" data-toggle="collapse" data-parent="#accordion">Empréstimos abertos</a></li>
+                                    <li><a href="#collapse5" data-toggle="collapse" data-parent="#accordion">Histórico</a></li>
+                                    <li><a href="#collapse6" data-toggle="collapse" data-parent="#accordion">Frequência de itens</a></li>
+                                    <li><a href="#collapse7" data-toggle="collapse" data-parent="#accordion">Itens em salas erradas</a></li>
+                                </ul>
+                                Cada uma das opções irá gerar uma relação em formato de tabela, que poderá ser filtrada por entrada digitada pelo usuário na barra de filtro. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><span class="glyphicon glyphicon-plus-sign"></span>
+                            Buscar um item pelo nome
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p class="text-justify">
+                                Ao ser selecionada essa opção, será gerada uma tabela mostrando os registros relativos aos itens que foram retirados e constam como ainda não devolvidos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><span class="glyphicon glyphicon-plus-sign"></span>
+                            Empréstimos abertos
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse4" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p class="text-justify">
+                                Ao ser selecionada essa opção, será gerada uma tabela mostrando os registros relativos aos itens que foram retirados e constam como ainda não devolvidos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"><span class="glyphicon glyphicon-plus-sign"></span>
+                            Histórico
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse5" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p class="text-justify">
+                                Esta opção exibe o registro das retiradas de material já devolvidos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse6"><span class="glyphicon glyphicon-plus-sign"></span>
+                            Frequência de itens
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse6" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Esta opção exibe o registro de empréstimos filtrado pela frequência de empréstimo de cada material.
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse7"><span class="glyphicon glyphicon-plus-sign"></span>
+                            Itens em salas erradas
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse7" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Esta opção exibe o registro de materiais que foram devolvidos em sala diferente de sua sala de origem.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-		
     </div>
 </body>
 </html>
