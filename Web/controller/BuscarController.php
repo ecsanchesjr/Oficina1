@@ -9,6 +9,4 @@
 		$search = new BuscarDAO($field);
 		echo $search->getItemLocationByName();
 	}
-
-
 ?>

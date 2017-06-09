@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start();?>
+<?php session_start();
+if(!$_SESSION["usuario"]){
+	header("Location:../index.php");
+}
+?>
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -33,7 +37,7 @@
 			function clearTable(){
 				$("#tabelaDivConsultas").hide();
 			}
-			var code;
+			var code, hue;
 			$(document).ready(function(){
 				$("#TableP").hide();
 			});
@@ -69,12 +73,6 @@
 					},
 					function(data,status){
 						if(tabelaC != null){
-							/*$("#TabelaConsultas").DataTable().clear();
-							$("#TabelaConsultas").DataTable().destroy();
-							var thead = $("#TabelaConsultas > thead");
-							thead.remove();
-							var tbody = $("#TabelaConsultas > tbody");
-							tbody.remove();*/
 							destroyTable();
 						}
 						$("#ModalRel").modal('hide');
@@ -114,7 +112,9 @@
 						language:{
 							search: "",
 							//search: "Filtrar: "
-							searchPlaceholder: "Filtrar consulta"
+							searchPlaceholder: "Filtrar consulta",
+							emptyTable: "Nenhum dado sobre a consulta foi encontrado",
+							zeroRecords: "Nenhuma linha foi encontrada com o parâmetro passado"
 						}
 					});
 					$('div.dataTables_filter input').addClass("form-control inputFilter");
@@ -145,7 +145,8 @@
 						<span class="caret"></span></button>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a class="dropdown-item" href="Ajuda.html">Ajuda</a></li>
-						<li><a class="dropdown-item" href="../index.php">Sair</a></li>
+						<li><a class="dropdown-item" href="#">Administrador</a></li>
+						<li><a class="dropdown-item" href="../controller/LogoutController.php">Sair</a></li>
 					</ul>
 				</div>
 			</div>
@@ -181,13 +182,13 @@
 					<div id="lineHr"><br /></div>
 					<div class="clear"></div>
 					<br />
-					<div>
+					<?php /*?><div>
 						<h4 class="modalTitleCenter" style="width: 20.5%">Personalizar Relatório</h4>
 					</div>
 					<div id="personRel">
 						<label class="text"><input id="checkRel" type="checkbox">Nome do item</label>
-					</div>
-				 </div>
+					</div><?php*/?>
+				</div>
 				 <div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 				 </div>

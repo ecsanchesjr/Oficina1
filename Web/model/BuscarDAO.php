@@ -19,15 +19,21 @@ class BuscarDAO{
 		$obj = $conn->connectionDB();
 		$rs = $obj->query($query);
 
-		echo '<thead>
-					<tr>
-						<th class="styleBasic">Nome do Item</th>
-						<th class="styleBasic">Disponível (Total)</th>
-						<th class="styleBasic">Número da Sala</th>
-						<th class="styleBasic">Bloco</th>
-					</tr>
-				</thead>
-				<tbody>';
+		if(mysqli_num_rows($rs)!=0){
+			echo '<thead>
+						<tr>
+							<th class="styleBasic">Nome do Item</th>
+							<th class="styleBasic">Disponível (Total)</th>
+							<th class="styleBasic">Número da Sala</th>
+							<th class="styleBasic">Bloco</th>
+						</tr>
+					</thead>
+					<tbody>';
+		}else{
+			echo '<p style="font-size: 15px">
+				Nenhum item com este nome foi encontrado.
+			</p>';
+		}
 
 		while($rows = $rs->fetch_assoc()){
 			$query1 = "SELECT count(*) as ItemEmp ";

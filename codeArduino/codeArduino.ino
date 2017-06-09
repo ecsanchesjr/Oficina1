@@ -2,6 +2,7 @@
 #include <MFRC522.h>
 #include <LiquidCrystal.h>
 #include <Ethernet.h>
+#include <avr/wdt.h>
 
 
 byte server[] = {192,168,1,102};
@@ -28,7 +29,8 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 LiquidCrystal lcd(6, 7, 5, 4, 3, 2);
 
 void setup(){
-  Serial.begin(1000000);
+  wdt_disable();
+  //Serial.begin(1000000);
   SPI.begin();
   Serial.println("Inicio");
   mfrc522.PCD_Init();
@@ -59,6 +61,7 @@ void msgSecundaria(){
   lcd.print("Aproxime a tag d");
   lcd.setCursor(0,1);
   lcd.print("o item no leitor");
+  wdt_enable(WDTO_4S);
 }
 
 void loop(){ // NOT FINISHED
@@ -77,7 +80,8 @@ void loop(){ // NOT FINISHED
   lcd.print("Leitura Efetuada");
   lcd.setCursor(0,1);
   lcd.print("Processando...");
-  Serial.println(control);
+  wdt_disable();
+  //Serial.println(control);
   if(control==1){
     hex2.concat(content);
     control++;
@@ -129,10 +133,10 @@ void continue_exec() {
 
   aux = connAndRead();
   Serial.println("PHP RETURN");
-  Serial.println(aux);
-  Serial.println("Keys");
-  Serial.println(hex1);
-  Serial.println(hex2);
+  //Serial.println(aux);
+  //Serial.println("Keys");
+  //Serial.println(hex1);
+  //Serial.println(hex2);
 
   if(aux.substring(0,19).equals("Devolucao concluida")){
 	  msgDevol();
