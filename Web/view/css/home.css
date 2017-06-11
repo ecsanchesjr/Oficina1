@@ -67,6 +67,12 @@
 
 .modalBtn{
 	width: 24%;
+	font-size: 1vw;
+}
+
+.myBtnTest{
+	width: 45%;
+	font-size: 1vw;
 }
 
 .sairAlign{

@@ -138,10 +138,10 @@ if(!$_SESSION["usuario"]){
 						echo '<p class="textInfos textCenter textFontSize textColor">'.$obj->getReUser($nick).'</p>';
 					?>
 				</div>
-				<div class="btnDiv dropdown"> <!-- Botões -->
-					<a id="btnRelatory" class="btn btn-default myBtn" role="button">Gerar Relatório</a>
+				<div class="btnDiv dropdown row"> <!-- Botões -->
+					<a id="btnRelatory" class="btn btn-default myBtnTest" role="button">Gerar Relatório</a>
 					<!-- <a id="btnControlPanel" class="btn btn-default myBtn" role="button">Painel de Controle</a> -->
-					<button class="btn btn-default myBtn dropdown-toggle" type="button" data-toggle="dropdown">Opções
+					<button class="btn btn-default myBtnTest dropdown-toggle" type="button" data-toggle="dropdown">Opções
 						<span class="caret"></span></button>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a class="dropdown-item" href="Ajuda.html">Ajuda</a></li>
