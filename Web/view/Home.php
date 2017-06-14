@@ -41,7 +41,7 @@ if(!$_SESSION["usuario"]){
 			$(document).ready(function(){
 				$("#TableP").hide();
 			});
-			$(document).ready(function(){
+			$(document).ready(function(){  // Função de Busca
 				$("#txtSearch").on("keydown", function(){
 					if(event.keyCode == 13 && $("#txtSearch").val() != ""){
 						$.post("../controller/BuscarController.php",
@@ -145,7 +145,7 @@ if(!$_SESSION["usuario"]){
 						<span class="caret"></span></button>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a class="dropdown-item" href="Ajuda.html">Ajuda</a></li>
-						<li><a class="dropdown-item" href="#">Administrador</a></li>
+						<li><a class="dropdown-item" href="AdminPage.html">Administrador</a></li>
 						<li><a class="dropdown-item" href="../controller/LogoutController.php">Sair</a></li>
 					</ul>
 				</div>

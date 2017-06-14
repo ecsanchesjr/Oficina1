@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" / />
+	<title>SACI - Tela de Administrador</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link href="css/adminpage.css" type="text/css" media="screen" rel="stylesheet" />
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script>
+		$(document).ready(function() { // Captura o retorno JSON do PHP
+			$.getJSON('../controller/AutoCompleteController.php', function(data) {
+				var words = [];
+				words = data;
+
+				$('#ItemNome').autocomplete({
+					source: words,
+					minLength: 3
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="godDiv godDivBorder">
+		<p class="title giant-title titleAlign textCenter">
+			Administrador de Sistema
+		</p>
+		<p class="title high-title Align textCenter">
+			Inserir itens de inventário no Banco de Dados
+		</p>
+		<div class="clear"></div>
+		<br />
+		<br  />
+		<div id="inputs" class="ui-widget">
+			Nome do item: <input id="ItemNome"/>
+			Descrição: <input />opcional
+			Sala: <input />
+			Bloco: <input />
+			Tag: <input />
+		</div>
+	</div>
+</body>
+</html>
