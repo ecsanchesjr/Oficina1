@@ -127,7 +127,11 @@ class RelatoriosDAO{
 				mysqli_close($objH);
 				mysqli_close($objE);
 
-				$freqRel = $count/$qtdTotal * 100;
+				if($qtdTotal==0){
+					$freqRel = 0;
+				}else{
+					$freqRel = $count/$qtdTotal * 100;
+				}
 
 				echo "<tr>
 							<td>".ucwords($row['inventario_nome'])."</td>
