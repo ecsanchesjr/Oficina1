@@ -24,7 +24,22 @@ if(!$_SESSION["usuario"]){
 		<link rel="stylesheet" type="text/css" href="datatables/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="datatables/buttons.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
-
+		<script>
+			$(document).ready(function(){
+				$.post("../controller/AdminController.php",
+			{},
+		function(data,status){
+			if(data == "no"){
+				$("#AdminBtn").addClass("disabledBtn");
+				$(document).ready(function(){
+    				$("#AdminBtn").click(function(event){
+        				event.preventDefault();
+    				});
+				});
+			}
+		});
+	});
+		</script>
 		<script>
 			function destroyTable(){
 				$("#TabelaConsultas").DataTable().clear();
@@ -145,7 +160,7 @@ if(!$_SESSION["usuario"]){
 						<span class="caret"></span></button>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a class="dropdown-item" href="Ajuda.html">Ajuda</a></li>
-						<li><a class="dropdown-item" href="AdminPage.html">Administrador</a></li>
+						<li><a id = "AdminBtn" class="dropdown-item" href="AdminPage.html">Administrador</a></li>
 						<li><a class="dropdown-item" href="../controller/LogoutController.php">Sair</a></li>
 					</ul>
 				</div>

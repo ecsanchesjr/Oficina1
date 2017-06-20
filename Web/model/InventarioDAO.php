@@ -26,5 +26,28 @@ class InventarioDAO{
 		}
 	}
 
+	function insertInventory($nome, $descricao, $sala, $bloco, $tags){
+		$qSala = "SELECT sala_id FROM Sala WHERE sala_numero = '".$sala."' AND sala_bloco = '".$bloco."'";
+		$conn = new ConexaoDAO();
+		$obj = $conn->connectionDB();
+		$rs = $obj->query($qSala);
+		$data = $rs->fetch_assoc();
+		$salaId = $data['sala_id'];
+		mysqli_close($obj);
+
+		foreach($tags as $key){
+			$query = "INSERT INTO Inventario ";
+			$query .= "(inventario_nome, inventario_descricao, inventario_sala, inventario_salaorigem, inventario_key) ";
+			$query .= "VALUES ";
+			$query.= "('".$nome."', '".$descricao."', '".$salaId."', '".$salaId."', '".$tags."')";
+
+			$obj = $conn->connectionDB();
+
+			$obj->query($query) or die($obj->error."");
+			mysqli_close($obj);
+			unset($query);
+		}
+	}
+
 }
 ?>
