@@ -39,7 +39,7 @@ class InventarioDAO{
 			$query = "INSERT INTO Inventario ";
 			$query .= "(inventario_nome, inventario_descricao, inventario_sala, inventario_salaorigem, inventario_key) ";
 			$query .= "VALUES ";
-			$query.= "('".$nome."', '".$descricao."', '".$salaId."', '".$salaId."', '".$key."')";
+			$query.= "('".$nome."', '".$descricao."', '".$salaId."', '".$salaId."', '".$tags."')";
 
 			$obj = $conn->connectionDB();
 

@@ -24,6 +24,45 @@
 			});
 		});
 	</script>
+	<script>
+		var nome, descricao, sala, bloco, tag;
+		function getValues(){
+			nome = $("#itemNome").val();
+			descricao = $("#itemNome").val();
+			if(descricao==""){
+				descricao = "Nenhuma descricao.";
+			}
+			sala = $("#itemSala").val();
+			bloco = $("#itemBloco").val();
+			tag = $("#itemTag").val();
+		}
+	</script>
+	<script>
+		function insert(){
+			getValues();
+			$.post("../controller/AdminInsertController.php",
+			{
+				itemNome: nome,
+				itemDescricao: descricao,
+				itemSala: sala,
+				itemBloco: bloco,
+				itemTag: tag
+			},
+		function(data,status){
+			document.getElementById("MensagemModal").innerHTML = data;
+			$("#Modal").modal();
+		});
+		}
+	</script>
+	<script>
+		$(function(){
+			var i = 1;
+			$("#AddFields").click(function(){
+				var line = $('<div><p>Só pra testar</p></div>').appendTo("#inputs");
+				i++;
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -37,14 +76,33 @@
 		<div class="clear"></div>
 		<br />
 		<br  />
-		<div id="inputs" class="ui-widget">
-			Nome do item: <input id="ItemNome"/>
-			Descrição: <input />opcional
-			Sala: <input />
-			Bloco: <input />
-			Tag: <input />
-			<i>Botão com Icon de +</i>
+		<div id="Inputs" class="ui-widget">
+			Nome do item: <input id="itemNome"/>
+			Descrição: <input id="itemDescricao"/>opcional
+			Sala: <input id="itemSala" />
+			Bloco: <input id="itemBloco"/>
+			Tag: <input id="itemTag"/>
+			<a id="AddForm">Botão com Icon de +</a>
 		</div>
+		<button onclick="insert()">SUBMIT</button>
 	</div>
+	<!--- MODAL DE DEBUG -->
+	  <div class="modal fade" id="Modal" role="dialog">
+			<div class="modal-dialog">
+			  <!-- Conteudo do modal-->
+			  <div class="modal-content">
+				  <div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal">&times;</button>
+					 <h4 class="modal-title"></h4>
+				  </div>
+				  <div id="MensagemModal" class="modal-body">
+					<p></p>
+				  </div>
+				  <div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				  </div>
+			  </div>
+			</div>
+	  </div>
 </body>
 </html>

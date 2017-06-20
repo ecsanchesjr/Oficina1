@@ -6,7 +6,7 @@ $itemNome = $_POST['itemNome'];
 $itemDescricao = $_POST['itemDescricao'];
 $itemSala = $_POST['itemSala'];
 $itemBloco = $_POST['itemBloco'];
-$itemtags = strtolower($_POST['itemTags']);
+$itemTags = strtolower($_POST['itemTag']);
 
 $obj = new InventarioDAO();
 
