@@ -153,3 +153,12 @@ input{
 	margin-right: 10%;
 	margin-left: 67%;
 }
+
+.disabledBtn{
+	text-decoration: line-through;
+	background-color: rgb(149, 146, 146);
+}
+.disabledBtn:hover{
+	text-decoration: line-through !important;
+	background-color: rgb(149, 146, 146) !important;
+}

@@ -17,10 +17,9 @@
 			$.getJSON('../controller/AutoCompleteController.php', function(data) {
 				var words = [];
 				words = data;
-
 				$('#ItemNome').autocomplete({
 					source: words,
-					minLength: 3
+					minLength: 2
 				});
 			});
 		});
@@ -44,6 +43,7 @@
 			Sala: <input />
 			Bloco: <input />
 			Tag: <input />
+			<i>Botão com Icon de +</i>
 		</div>
 	</div>
 </body>
