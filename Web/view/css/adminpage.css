@@ -1,3 +1,15 @@
-/*
-	Se não tiver nada o git não sobe
-*/
+.addTags{
+	width: 35%;
+	float: left
+}
+
+.myFormStyle {
+    text-align: center;
+    padding-bottom: 0px;
+    padding-top: 5px;
+}
+
+.formTagsControl{
+	width: 70%;
+	display: inline-block;
+}

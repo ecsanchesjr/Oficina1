@@ -8,6 +8,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" type="text/css" href="css/adminpage.css" />
 	<link href="css/adminpage.css" type="text/css" media="screen" rel="stylesheet" />
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -55,11 +56,14 @@
 		}
 	</script>
 	<script>
-		$(function(){
-			var i = 1;
-			$("#AddFields").click(function(){
-				var line = $('<div><p>Só pra testar</p></div>').appendTo("#inputs");
-				i++;
+		var i = 2;
+		$(document).ready(function(){
+			$("#AddFields").click(function(e){
+				e.preventDefault();
+				if(i < 10){
+					$("#TagsNovas").append('<div id="field['+i+']"><label for="tag['+i+']">Tag['+i+']:</label><input name="tag['+i+']"id="tag['+i+']" class="formTagsControl form-control "><i class="glyphicon glyphicon-minus btn btn-danger"></i></input></div><br />');
+					i++;
+				}
 			});
 		});
 	</script>
@@ -82,7 +86,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-offset-1 col-xs-10">
-
                     <div class="form-horizontal">
                         <div class="col-xs-1">
                             <label for="nome">Nome do item</label>
@@ -106,18 +109,14 @@
                         </div>
 
                         <div class="col-xs-1 myFormStyle">
-                            <label for="tag">Tag</label>
+                            <label for="tag[0]">Tag[1]</label>
                         </div>
                         <div class="col-xs-2">
-                            <input id="tag" type="text" class="form-control" placeholder="Ex.: 00000000"/>
+                            <input id="tag[0]" type="text" class="form-control" placeholder="Ex.: 00000000"/>
                         </div>
                     </div>
-
                     <br/>
                     <br/>
-                    <br/>
-                    <br/>
-
                     <label for="descricao">
                         Descrição
                     </label>
@@ -127,15 +126,18 @@
                     </div>
                 </div>
 
-                <div class="col-xs-offset-1 col-xs-10">
+					 <div id="TagsNovas" class="addTags"> <!-- ADD tags DIV -->
+						<p></p>
+					 </div>
+
+                <div style="float:left">
                     <br/>
-                    <button type="button" data-toggle="tooltip" title="Adicionar campo" class="glyphicon glyphicon-plus btn btn-success"></button>
+                    <button id="AddFields" type="button" data-toggle="tooltip" title="Adicionar campo" class="glyphicon glyphicon-plus btn btn-success"></button>
                 </div>
 
-                <div class="col-xs-offset-1 col-xs-10">
+                <div style="float:left">
                     <br/>
                     <button type="button" class="btn btn-success">Adicionar item</button>
-
                     <a class="pull-right btn btn-success" href="javascript:window.history.go(-1)">Voltar</a>
                 </div>
             </div>
