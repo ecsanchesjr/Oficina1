@@ -61,3 +61,10 @@ html,body {
 .clear{
 	clear:both;
 }
+
+.formstyle {
+    text-align: right;
+    color: white;
+    padding-right: 0px;
+    padding-top: 7px;
+}
