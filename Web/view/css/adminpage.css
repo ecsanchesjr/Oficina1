@@ -1,5 +1,10 @@
 .addTags{
 	width: 35%;
+	float: left;
+}
+
+.errLabel{
+	width: 30%;
 	float: left
 }
 
