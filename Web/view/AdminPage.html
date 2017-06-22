@@ -18,8 +18,6 @@
 		var errWords=new Array();
 		var nome, descricao, sala, bloco, tags=[], jsonTags;
 	</script>
-	</script>
-	</script>
 	<script>
 		$(document).ready(function() { // Captura o retorno JSON do PHP
 			$.getJSON('../controller/AutoCompleteController.php', function(data) {
@@ -35,9 +33,9 @@
 	<script>
 		function getValues(){
 			nome = $("#itemNome").val();
-			descricao = $("#itemNome").val();
+			descricao = $("#itemDescricao").val();
 			if(descricao==""){
-				descricao = "Nenhuma descricao.";
+				descricao = "Nenhuma descrição.";
 			}
 			sala = $("#itemSala").val();
 			bloco = $("#itemBloco").val();
@@ -62,6 +60,26 @@
 			nome=descricao=sala=bloco=jsonTags=tags="";
 			tags=[];
 		}
+
+		function errTreatmentDuplicateKey(){
+			/*
+			* Função de tratamento para erro de chave duplicada no banco, ela irá verificar os campos que possuem a ocorrência e irá "pintar" os input
+			* mostrando ao usuário o problema.
+			*/
+			var totalErr = errWords.length/2; // pq a msg sempre vem com tamanho duplicado
+			var ctrl=0; // variável para controlar o total de campos a serem marcados
+			errWords.forEach(function(valor){  // aqui vamos começar a olhar, campo a campo, qual tag pode ter dado problema
+				for(var j=x-1; j>0; j--){ // irá começar no último campo, porém o x sempre tem 1 valor a mais, por isso -1
+					var val = "'"+$("#tag"+j+"").val().toLowerCase()+"'";
+					if(val == valor){  // comparação
+						if(ctrl != totalErr){
+							ctrl++;
+							$("#tag"+j+"").addClass("alert-warning"); // "pinta" o input com essa classe
+						}
+					}
+				}
+			});
+		}
 	</script>
 	<script>
 		function insert(){
@@ -83,19 +101,10 @@
 					}else{ // aqui vamos verificar o que deu erro e aonde deu erro
 						if(data.search("inventario_key_UNIQUE")>0){  // existe alguma tag repetida
 							errWords = data.match(regAspas);
-							errWords.forEach(function(valor){  // aqui vamos começar a olhar, campo a campo, qual tag pode ter dado problema
-								console.log(valor);
-								for(var j=1; j<x; j++){
-									var val = "'"+$("#tag"+j+"").val().toLowerCase()+"'";
-									console.log(val);
-									if(val == valor){  // comparação
-										$("#tag"+j+"").addClass("alert-warning"); // "pinta" o input com essa classe
-									}
-								}
-							});
-						}else if(){ // algum outro erro
+							errTreatmentDuplicateKey();  // chama a função de tratamento para este erro
+						}/*else if(){ // algum outro erro
 
-						}
+						}*/
 						document.getElementById("MensagemModal").innerHTML = data;
 						$("#Modal").modal();
 					}
@@ -180,7 +189,7 @@
                     </label>
                     <br/>
                     <div>
-                        <input class="form-control" id="descricao"/>
+                        <input class="form-control" id="itemDescricao"/>
                     </div>
                 </div>
 
