@@ -75,14 +75,26 @@
 					itemBloco: bloco,
 					itemTag: jsonTags
 				},
-				function(data,status){
-					if(data == ""){
+				function(data,status){ //pega o retorno do php
+					if(data == ""){ // se a data estiver vazia, então deu certo a inserção de todas as tags
 						document.getElementById("MensagemModal").innerHTML = "Ta tudo certo";
 						$("#Modal").modal();
-					}else{
-						if(data.search("inventario_key_UNIQUE")>0){
+						$('input').removeClass("alert-warning");
+					}else{ // aqui vamos verificar o que deu erro e aonde deu erro
+						if(data.search("inventario_key_UNIQUE")>0){  // existe alguma tag repetida
 							errWords = data.match(regAspas);
-							alert(errWords);
+							errWords.forEach(function(valor){  // aqui vamos começar a olhar, campo a campo, qual tag pode ter dado problema
+								console.log(valor);
+								for(var j=1; j<x; j++){
+									var val = "'"+$("#tag"+j+"").val().toLowerCase()+"'";
+									console.log(val);
+									if(val == valor){  // comparação
+										$("#tag"+j+"").addClass("alert-warning"); // "pinta" o input com essa classe
+									}
+								}
+							});
+						}else if(){ // algum outro erro
+
 						}
 						document.getElementById("MensagemModal").innerHTML = data;
 						$("#Modal").modal();
@@ -98,7 +110,7 @@
 	<script>
 		var i = 2;
 		var x = 2;
-		$(document).ready(function(){
+		$(document).ready(function(){  // onde a magia dos campos dinâmicos acontece
 			$("#AddFields").click(function(e){
 				e.preventDefault();
 				if(i < 10){
