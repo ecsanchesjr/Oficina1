@@ -14,6 +14,13 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<script>
+		var regAspas = /\'(.*?)\'/g;
+		var errWords=new Array();
+		var nome, descricao, sala, bloco, tags=[], jsonTags;
+	</script>
+	</script>
+	</script>
+	<script>
 		$(document).ready(function() { // Captura o retorno JSON do PHP
 			$.getJSON('../controller/AutoCompleteController.php', function(data) {
 				var words = [];
@@ -26,7 +33,6 @@
 		});
 	</script>
 	<script>
-		var nome, descricao, sala, bloco, tag;
 		function getValues(){
 			nome = $("#itemNome").val();
 			descricao = $("#itemNome").val();
@@ -35,34 +41,69 @@
 			}
 			sala = $("#itemSala").val();
 			bloco = $("#itemBloco").val();
-			tag = $("#itemTag").val();
+			getTagValues();
+		}
+
+		function verifValues(){
+			if(nome=="" || sala=="" || bloco =="" || tags =="")
+				return(true);
+		}
+
+		function getTagValues(){
+			for(var j = 1; j<x; j++){
+				if(!$("#tag"+j+"").val().toLowerCase() == ""){
+					tags.push($("#tag"+j+"").val().toLowerCase());
+				}
+			}
+			jsonTags = JSON.stringify(tags);
+		}
+
+		function clearlAllValues(){
+			nome=descricao=sala=bloco=jsonTags=tags="";
+			tags=[];
 		}
 	</script>
 	<script>
 		function insert(){
 			getValues();
-			$.post("../controller/AdminInsertController.php",
-			{
-				itemNome: nome,
-				itemDescricao: descricao,
-				itemSala: sala,
-				itemBloco: bloco,
-				itemTag: tag
-			},
-		function(data,status){
-			document.getElementById("MensagemModal").innerHTML = data;
-			$("#Modal").modal();
-		});
+			if(!verifValues()){
+				$.post("../controller/AdminInsertController.php",
+				{
+					itemNome: nome,
+					itemDescricao: descricao,
+					itemSala: sala,
+					itemBloco: bloco,
+					itemTag: jsonTags
+				},
+				function(data,status){
+					if(data == ""){
+						document.getElementById("MensagemModal").innerHTML = "Ta tudo certo";
+						$("#Modal").modal();
+					}else{
+						if(data.search("inventario_key_UNIQUE")>0){
+							errWords = data.match(regAspas);
+							alert(errWords);
+						}
+						document.getElementById("MensagemModal").innerHTML = data;
+						$("#Modal").modal();
+					}
+					clearlAllValues();
+				});
+			}else{
+				document.getElementById("MensagemModal").innerHTML = "ERRO!!!!!!!!";
+				$("#Modal").modal();
+			}
 		}
 	</script>
 	<script>
 		var i = 2;
+		var x = 2;
 		$(document).ready(function(){
 			$("#AddFields").click(function(e){
 				e.preventDefault();
 				if(i < 10){
-					$("#TagsNovas").append('<div id="field['+i+']"><br /><label for="tag['+i+']">Tag:</label> <input name="tag['+i+']"id="tag['+i+']" class="formTagsControl form-control "> <i id="DelFields" class="remove glyphicon glyphicon-minus btn btn-danger btn-circle"></i></input></div>');
-					i++;
+					$("#TagsNovas").append('<div><br /><label>Tag:</label> <input id="tag'+i+'" class="formTagsControl form-control "> <i id="DelFields" class="remove glyphicon glyphicon-minus btn btn-danger btn-circle"></i></input></div>');
+					i++; x++;
 				}
 			});
 			$("#TagsNovas").on("click", ".remove", function(e){
@@ -96,28 +137,28 @@
                             <label for="nome">Nome do item</label>
                         </div>
                         <div class="col-xs-2">
-                            <input id="nome" type="text" class="form-control" placeholder="Ex.: Nome"/>
+                            <input id="itemNome" type="text" class="form-control" placeholder="Ex.: Nome"/>
                         </div>
 
                         <div class="col-xs-1 myFormStyle">
-                            <label for="bloco">Bloco</label>
+                            <label for="itemBloco">Bloco</label>
                         </div>
                         <div class="col-xs-2">
-                            <input id="bloco" type="text" class="form-control" placeholder="Ex.: Bloco K"/>
+                            <input id="itemBloco" type="text" class="form-control" placeholder="Ex.: Bloco K"/>
                         </div>
 
                         <div class="col-xs-1 myFormStyle">
-                            <label for="sala">Sala</label>
+                            <label for="itemSala">Sala</label>
                         </div>
                         <div class="col-xs-2">
-                            <input id="sala" type="text" class="form-control" placeholder="Ex.: K000"/>
+                            <input id="itemSala" type="text" class="form-control" placeholder="Ex.: K000"/>
                         </div>
 
                         <div class="col-xs-1 myFormStyle">
-                            <label for="tag[0]">Tag: </label>
+                            <label>Tag: </label>
                         </div>
                         <div class="col-xs-2">
-                            <input id="tag[0]" type="text" class="form-control" placeholder="Ex.: 00000000"/>
+                            <input id="tag1" type="text" class="form-control" placeholder="Ex.: 00000000"/>
                         </div>
                     </div>
                     <br/>
@@ -145,7 +186,7 @@
 
                 <div style="float:left">
                     <br/>
-                    <button type="button" class="btn btn-success">Adicionar item</button>
+                    <button type="button" class="btn btn-success" onclick="insert();">Adicionar item</button>
                     <a class="pull-right btn btn-success" href="javascript:window.history.go(-1)">Voltar</a>
                 </div>
             </div>

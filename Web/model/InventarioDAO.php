@@ -34,16 +34,16 @@ class InventarioDAO{
 		$data = $rs->fetch_assoc();
 		$salaId = $data['sala_id'];
 		mysqli_close($obj);
-
 		foreach($tags as $key){
 			$query = "INSERT INTO Inventario ";
 			$query .= "(inventario_nome, inventario_descricao, inventario_sala, inventario_salaorigem, inventario_key) ";
 			$query .= "VALUES ";
-			$query.= "('".$nome."', '".$descricao."', '".$salaId."', '".$salaId."', '".$tags."')";
+			$query.= "('".$nome."', '".$descricao."', '".$salaId."', '".$salaId."', '".$key."')";
 
 			$obj = $conn->connectionDB();
-
-			$obj->query($query) or die($obj->error."");
+			if(!$obj->query($query)){
+				echo "".$obj->error;
+			}
 			mysqli_close($obj);
 			unset($query);
 		}

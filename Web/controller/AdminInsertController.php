@@ -2,11 +2,11 @@
 include("../model/ConexaoDAO.php");
 include("../model/InventarioDAO.php");
 
-$itemNome = $_POST['itemNome'];
-$itemDescricao = $_POST['itemDescricao'];
+$itemNome = ucwords($_POST['itemNome']);
+$itemDescricao = ucfirst($_POST['itemDescricao']);;
 $itemSala = $_POST['itemSala'];
 $itemBloco = $_POST['itemBloco'];
-$itemTags = strtolower($_POST['itemTag']);
+$itemTags = json_decode($_POST['itemTag'], true);
 
 $obj = new InventarioDAO();
 
