@@ -1,21 +1,64 @@
-.addTags{
-	width: 35%;
-	float: left;
+#parent{
+	 float: left; width: 100%
 }
 
-.errLabel{
-	width: 30%;
+.alignFloat{
 	float: left
 }
 
+.textLabel{
+	color: white;
+	font-size: 100%;
+	text-shadow: 1px 1px black;
+}
+
+.alignRight{
+	float: right;
+}
+
+.form-control{
+	height: 90%;
+}
+
+.formInline{
+	display: inline-block;
+}
+
+.addTags{
+	width: 25%;
+	float: left;
+	padding-left: 2%;
+}
+
+.myPadding{
+	position: relative;
+	padding-left: 3%;
+	padding-right: 3%
+}
+
+
+.errLabel{
+
+}
+
+.miniFormDiv{
+	width: 25%;
+}
+
+.miniForm{
+	position: relative;
+	width: 55%;
+	display: inline-block;
+}
+
 .myFormStyle {
-    text-align: center;
-    padding-bottom: 0px;
-    padding-top: 5px;
+	position: relative;
+	width: 60%;
+	display: inline-block;
 }
 
 .formTagsControl{
-	width: 70%;
+	width: 58%;
 	display: inline-block;
 }
 

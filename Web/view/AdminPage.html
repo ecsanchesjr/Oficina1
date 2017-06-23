@@ -17,13 +17,14 @@
 		var regAspas = /\'(.*?)\'/g;
 		var errWords=new Array();
 		var nome, descricao, sala, bloco, tags=[], jsonTags;
+		var blocoS, salaS;
 	</script>
 	<script>
 		$(document).ready(function() { // Captura o retorno JSON do PHP
 			$.getJSON('../controller/AutoCompleteController.php', function(data) {
 				var words = [];
 				words = data;
-				$('#ItemNome').autocomplete({
+				$('#itemNome').autocomplete({
 					source: words,
 					minLength: 2
 				});
@@ -31,14 +32,52 @@
 		});
 	</script>
 	<script>
+		$(document).ready(function(){
+			$.post("../controller/LocationController.php",
+		{
+			operation: 1
+		},
+			function(data,status){
+				$("#itemBloco").append(data);
+			});
+		});
+		function getRoomz(){
+			getBlockValue();
+			document.getElementById('itemSala').disabled = false;
+			$.post("../controller/LocationController.php",
+		{
+			operation: 2,
+			bloco: blocoS
+		},
+			function(data, status){
+				document.getElementById("itemSala").innerHTML = data;
+			});
+		}
+		function getBlockValue(){
+			var x = document.getElementById("itemBloco");
+			var i = x.selectedIndex;
+			blocoS = x.options[i].text;
+		}
+
+		function getRoomValue(){
+			var x = document.getElementById("itemSala");
+			var i = x.selectedIndex;
+			salaS = x.options[i].text;
+		}
+	</script>
+	<script>
 		function getValues(){
-			nome = $("#itemNome").val();
+			getRoomValue();
+			getBlockValue();
+			//if($("#itemNome").val() == ""){
+				nome = $("#itemNome").val();
+			//}
 			descricao = $("#itemDescricao").val();
 			if(descricao==""){
 				descricao = "Nenhuma descrição.";
 			}
-			sala = $("#itemSala").val();
-			bloco = $("#itemBloco").val();
+			sala = salaS;
+			bloco = blocoS;
 			getTagValues();
 		}
 
@@ -49,8 +88,10 @@
 
 		function getTagValues(){
 			for(var j = 1; j<x; j++){
-				if(!$("#tag"+j+"").val().toLowerCase() == ""){
-					tags.push($("#tag"+j+"").val().toLowerCase());
+				if(document.getElementById("tag"+j+"")){
+					if(!$("#tag"+j+"").val() == ""){
+						tags.push($("#tag"+j+"").val().toLowerCase());
+					}
 				}
 			}
 			jsonTags = JSON.stringify(tags);
@@ -70,11 +111,16 @@
 			var ctrl=0; // variável para controlar o total de campos a serem marcados
 			errWords.forEach(function(valor){  // aqui vamos começar a olhar, campo a campo, qual tag pode ter dado problema
 				for(var j=x-1; j>0; j--){ // irá começar no último campo, porém o x sempre tem 1 valor a mais, por isso -1
-					var val = "'"+$("#tag"+j+"").val().toLowerCase()+"'";
-					if(val == valor){  // comparação
-						if(ctrl != totalErr){
-							ctrl++;
-							$("#tag"+j+"").addClass("alert-warning"); // "pinta" o input com essa classe
+					console.log("X: "+x+"/I: "+i);
+					if(document.getElementById("tag"+j+"")){
+						var val = "'"+$("#tag"+j+"").val().toLowerCase()+"'";
+						console.log(val, valor);
+						if(val == valor){  // comparação
+							if(ctrl != totalErr){
+								console.log("pinta tag "+j);
+								ctrl++;
+								$("#tag"+j+"").addClass("alert-danger"); // "pinta" o input com essa classe
+							}
 						}
 					}
 				}
@@ -84,6 +130,7 @@
 	<script>
 		function insert(){
 			getValues();
+			console.log(nome, descricao, sala, bloco, jsonTags, tags);
 			if(!verifValues()){
 				$.post("../controller/AdminInsertController.php",
 				{
@@ -123,7 +170,7 @@
 			$("#AddFields").click(function(e){
 				e.preventDefault();
 				if(i < 10){
-					$("#TagsNovas").append('<div><br /><label>Tag:</label> <input id="tag'+i+'" class="formTagsControl form-control "> <i id="DelFields" class="remove glyphicon glyphicon-minus btn btn-danger btn-circle"></i></input></div>');
+					$("#TagsNovas").append('<div><br /><label class="textLabel">Tag:</label> <input id="tag'+x+'" class="formTagsControl form-control" placeholder="0f0f0f0f0f" pattern="[a-fA-F0-9]{10}"> <i id="DelFields" class="remove glyphicon glyphicon-minus btn btn-danger btn-circle"></i></input></div>');
 					i++; x++;
 				}
 			});
@@ -137,7 +184,7 @@
 </head>
 
 <body>
-	<div class="godDiv godDivBorder">
+	<div class="godDiv godDivBorder myPadding">
 		<p class="title giant-title titleAlign textCenter">
 			Administrador de Sistema
 		</p>
@@ -146,75 +193,61 @@
 		</p>
 		<div class="clear"></div>
 
-        <br/>
+		<hr />
+		<div>
 
-        <br/>
+			<div id="linha1">
+				<div class="form-group alignFloat col-sm-4" style="width:50%">
+					<label class="textLabel">Nome do item:  </label>
+					<input id="itemNome" class="form-control myFormStyle" placeholder="Martelo" required/>
+				</div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-offset-1 col-xs-10">
-                    <div class="form-horizontal">
-                        <div class="col-xs-2 formstyle">
-                            <label for="nome">Nome do item:</label>
-                        </div>
-                        <div class="col-xs-2">
-                            <input id="itemNome" type="text" class="form-control" placeholder="Ex.: Nome"/>
-                        </div>
+				<div class="form-group alignFloat col-sm-3">
+					<label class="textLabel">Bloco: </label>
+					<select onchange="getRoomz()" id="itemBloco" class="selectpicker form-control miniForm">
+						<option disabled selected>Escolha...</option>
+					</select>
+				</div>
 
-                        <div class="col-xs-1 formstyle">
-                            <label for="itemBloco">Bloco:</label>
-                        </div>
-                        <div class="col-xs-3">
-                            <input id="itemBloco" type="text" class="form-control" placeholder="Ex.: Bloco K"/>
-                        </div>
+				<div class="form-group alignFloat col-sm-3">
+					<label class="textLabel">Sala: </label>
+					<select id="itemSala" class="selectpicker form-control miniForm" disabled>
+					</select>
+				</div>
+			</div>
+			<div class="clear"></div>
 
-                        <div class="col-xs-1 formstyle">
-                            <label for="itemSala">Sala:</label>
-                        </div>
-                        <div class="col-xs-3">
-                            <input id="itemSala" type="text" class="form-control" placeholder="Ex.: K000"/>
-                        </div>
-                                                
-                        <br/>
-                        <br/>
-                        <br/>
-                        
-                        <div class="col-xs-2 formstyle">
-                            <label for="tag">Tag:</label>
-                        </div>
-                        
-                        <div class="col-xs-4">
-                            <input id="tag" type="text" class="form-control" placeholder="Ex.: 00000000"/>
-                        </div>
-                        
-                        <div class="col-xs-2 formstyle">
-                            <label for="descricao">Descrição:</label>
-                        </div>
-                        
-                        <div class="col-xs-4">
-                            <input id="descricao" type="text" class="form-control"/>
-                        </div>
-                    </div>
-                </div>
+			<div id="linha2">
+				<div class="form-group alignFloat col-sm-3" >
+					<label class="textLabel">Tag: </label>
+					<input id="tag1" class="form-control myFormStyle" placeholder="0f0f0f0f0f" pattern="[a-fA-F0-9]{8}"/>
+				</div>
 
-					 <div id="TagsNovas" class="addTags"> <!-- ADD tags DIV -->
-						<p></p>
+				<div class="form-group col-sm-9">
+					<label class="textLabel">Descrição: </label>
+					<input id="itemDescricao" class="selectpicker form-control formInline" style="width: 81%" placeholder="Padrão: Nenhuma descrição."/>
+				</div>
+			</div>
+			<div class="clear"></div>
+
+		</div>
+			<div id="TagsNovas" class="addTags"> <!-- ADD tags DIV -->
+				<p></p>
+			 </div>
+
+					 <div class="col-sm-9 form-group " style="padding-right: 8%">
+						<div>
+	                    <button id="AddFields" type="button" data-toggle="tooltip" title="Adicionar campo" class="glyphicon glyphicon-plus btn btn-default"></button>
+							  <a class="btn btn-default alignRight" style="margin-left: 10%" href="javascript:window.history.go(-1)">Voltar</a>
+							  <button onclick="insert();" class="btn btn-default alignRight">Adicionar item</button>
+	               </div>
+
+						<div style="background-color: white" class="errLabel">
+						 <p id="ErrLabel"></p>
+					  </div>
 					 </div>
-					 <div style="background-color: white" class="errLabel">
-						 <br />
-						<p id="ErrLabel">Preciso dessa div aqui, alinha! kk meio que não sei usar essas conf do BS, só sei fazer no dedo. Me pergunte sobre, explico melhor lá</p>
-					 </div>
-                <div style="float:left">
-                    <br/>
-                    <button id="AddFields" type="button" data-toggle="tooltip" title="Adicionar campo" class="glyphicon glyphicon-plus btn btn-success"></button>
-                </div>
-
-                <div style="float:left">
-                    <br/>
-                    <button type="button" class="btn btn-success" onclick="insert();">Adicionar item</button>
-                    <a class="pull-right btn btn-success" href="javascript:window.history.go(-1)">Voltar</a>
-                </div>
-            </div>
+					<div class="clear"></div>
+            </div> <!-- god div -->
         </div>
     </div>
 
