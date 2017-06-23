@@ -55,13 +55,13 @@
 
 							</div>
 						</div>
-						<div class="form-group">
+						<!---<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<div class="checkbox">
 									<label class="text"><input type="checkbox">Lembrar dados</label>
 								</div>
 							</div>
-						</div>
+						</div>--->
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<button type="submit" class="btn btn-default myBtn">Entrar</button>

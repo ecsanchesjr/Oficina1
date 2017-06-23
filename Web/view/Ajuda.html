@@ -12,28 +12,28 @@
 	<link href="css/ajuda.css" type="text/css" media="screen" rel="stylesheet" />
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-    
+
     <script>
         $(document).ready(function(){
             $('div.panel-collapse').on('show.bs.collapse', function(){
                 $(this).parent().find('span.glyphicon-plus-sign').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
                 $(this).parent().toggleClass('panel-default panel-success');
             });
-            
+
             $('div.panel-collapse').on('hide.bs.collapse', function(){
                 $(this).parent().find('span.glyphicon-minus-sign').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
                 $(this).parent().toggleClass('panel-success panel-default');
             });
         })
     </script>
-    
+
 </head>
 <body>
 	<div class="godDiv godDivBorder row">
 		<h1 class="text-center title">Ajuda ao Usuário</h1>
 
 		<hr/>
-        
+
         <div class="col-xs-offset-1 col-xs-10">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-success">
@@ -48,7 +48,7 @@
                     <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <p class="text-justify">
-                                O sistema SACI possui como objetivo a automatização do registro de entrada e saída de equipamentos cadastrados no sistema. O recurso web desse sistema irá ajudá-lo a gerar relatórios que irão mostrar o status das entradas e saídas (devoluções e empréstimos) dos equipamentos. 
+                                O sistema SACI possui como objetivo a automatização do registro de entrada e saída de equipamentos cadastrados no sistema. O recurso web desse sistema irá ajudá-lo a gerar relatórios que irão mostrar o status das entradas e saídas (devoluções e empréstimos) dos equipamentos.
                             </p>
                         </div>
                     </div>
@@ -73,12 +73,12 @@
                                     <li><a href="#collapse6" data-toggle="collapse" data-parent="#accordion">Frequência de itens</a></li>
                                     <li><a href="#collapse7" data-toggle="collapse" data-parent="#accordion">Itens em salas erradas</a></li>
                                 </ul>
-                                Cada uma das opções irá gerar uma relação em formato de tabela, que poderá ser filtrada por entrada digitada pelo usuário na barra de filtro. 
+                                Cada uma das opções irá gerar uma relação em formato de tabela, que poderá ser filtrada por entrada digitada pelo usuário na barra de filtro.
                             </p>
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -168,10 +168,29 @@
                         </div>
                     </div>
                 </div>
+
+					 <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse8"><span class="glyphicon glyphicon-plus-sign"></span>
+                            Tela de Administrador
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse8" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p class="text-justify">
+                                Página que auxilia usuários a inserir itens de inventário no sistema.
+										  Apenas usuários que possuam permissão de administrador podem acessar essa página.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+
             <a class="pull-right btn btn-success" href="javascript:window.history.go(-1)">Voltar</a>
-            
+
         </div>
         <br/>
     </div>
