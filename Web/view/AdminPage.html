@@ -142,23 +142,25 @@
 				},
 				function(data,status){ //pega o retorno do php
 					if(data == ""){ // se a data estiver vazia, então deu certo a inserção de todas as tags
-						document.getElementById("MensagemModal").innerHTML = "Ta tudo certo";
+						document.getElementById("MensagemModal").innerHTML = "Itens inseridos com sucesso.";
 						$("#Modal").modal();
 						$('input').removeClass("alert-warning");
 					}else{ // aqui vamos verificar o que deu erro e aonde deu erro
 						if(data.search("inventario_key_UNIQUE")>0){  // existe alguma tag repetida
 							errWords = data.match(regAspas);
 							errTreatmentDuplicateKey();  // chama a função de tratamento para este erro
+							document.getElementById("MensagemModal").innerHTML = "Tag duplicada no sistema. Verifique os campos em vermelho.";
+							$("#Modal").modal();
 						}/*else if(){ // algum outro erro
 
 						}*/
-						document.getElementById("MensagemModal").innerHTML = data;
-						$("#Modal").modal();
+						/*document.getElementById("MensagemModal").innerHTML = data;
+						$("#Modal").modal();*/
 					}
 					clearlAllValues();
 				});
 			}else{
-				document.getElementById("MensagemModal").innerHTML = "ERRO!!!!!!!!";
+				document.getElementById("MensagemModal").innerHTML = "Ocorreu um problema, verique os campos digitados.";
 				$("#Modal").modal();
 			}
 		}
