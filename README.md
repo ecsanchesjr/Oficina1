@@ -31,6 +31,4 @@ O projeto foi moldado em torno das necessidades organizacionais presentes na pr√
 	* Sistema Geral: PHP.
 	* Consultas ao Banco: SQL.	
 
-## Andamento do Projeto
 
-O projeto ainda est√° em fase de desenvolvimento pelos alunos. 
